@@ -1,7 +1,15 @@
+using RotaryClub.Data.Settings;
+using RotaryClub.Interfaces;
+using RotaryClub.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Dependency Injection
+builder.Services.AddSingleton<IFacebookService, FacebookService>();
+builder.Services.Configure<FacebookSettings>(builder.Configuration.GetSection("Facebook"));
 
 var app = builder.Build();
 
