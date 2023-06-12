@@ -12,9 +12,11 @@ namespace RotaryClub.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        public UserService(IUserRepository userRepository)
+        private readonly IConfiguration _configuration;
+        public UserService(IUserRepository userRepository, IConfiguration configuration)
         {
             _userRepository = userRepository;
+            _configuration = configuration;
         }
 
         private bool CheckIfExists(string email)
@@ -44,15 +46,18 @@ namespace RotaryClub.Services
             return Convert.ToHexString(RandomNumberGenerator.GetBytes(64));
         }
 
-        public UserStatus CreateUser(string email, string password)
+        public UserStatus CreateUser(UserRegisterViewModel request)
         {
-            if (CheckIfExists(email))
+            if (request.Keyword != _configuration.GetValue<string>("Keyword"))
+                return new UserStatus("Wrong keyword");
+
+            if (CheckIfExists(request.Email))
                 return new UserStatus("User already exists");
             
-            CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
+            CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
             var user = new User
             {
-                Email = email,
+                Email = request.Email,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
                 VerificationToken = CreateRandomToken()

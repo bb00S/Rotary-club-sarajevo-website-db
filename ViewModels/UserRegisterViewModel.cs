@@ -10,5 +10,8 @@ namespace RotaryClub.ViewModels
         public string Password { get; set; } = string.Empty;
         [Required, Compare("Password", ErrorMessage = "Password and Confirm password field must match")]
         public string ConfirmPassword { get; set; } = string.Empty;
+
+        [Required]
+        public string Keyword { get; set; } = string.Empty;
     }
 }
