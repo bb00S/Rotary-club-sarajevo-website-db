@@ -24,6 +24,19 @@ namespace RotaryClub.Repository
             return _context.Users.Any(u => u.Email == email);
         }
 
-        public async Task<User> GetUser(string email) => await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        public async Task<User> GetUser(string email)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        }
+
+        public async Task<User> VerifyToken(string token)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.VerificationToken == token);
+            if (user != null) {
+                user.VerifiedAt = DateTime.Now;
+                await _context.SaveChangesAsync();
+            }
+            return user;
+        }
     }
 }

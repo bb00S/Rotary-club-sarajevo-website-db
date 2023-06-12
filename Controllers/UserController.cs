@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using RotaryClub.Interfaces;
 using RotaryClub.ViewModels;
 using System.Security.Claims;
+using RotaryClub.Models;
 
 namespace RotaryClub.Controllers
 {
@@ -42,7 +43,10 @@ namespace RotaryClub.Controllers
 
             var status = _userService.CreateUser(request);
             if (status.Success)
-                return Redirect("RegisterSuccess");
+                return RedirectToAction("SendVerificationEmail", "Email", new Email()
+                {
+                    EmailAddress = request.Email,
+                });
 
             this.ViewBag.Message = status.ErrorMessage + "!";
             return View(request);
@@ -56,6 +60,15 @@ namespace RotaryClub.Controllers
                 return RedirectToAction("Index", "Home");
             var model = new UserLoginViewModel();
             return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Verify(string token)
+        {
+            var response = await _userService.VerifyUser(token);
+            if (response.Success)
+                 return View("VerificationSuccess");
+            return BadRequest();
         }
 
         [HttpPost]

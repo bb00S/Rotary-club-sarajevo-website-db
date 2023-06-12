@@ -26,7 +26,11 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddSingleton<IFacebookService, FacebookService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IEmailSenderService, EmailSenderService>();
+
+//Konfiguracije
 builder.Services.Configure<FacebookSettings>(builder.Configuration.GetSection("Facebook"));
+builder.Services.Configure<MailgunSettings>(builder.Configuration.GetSection("EmailConfiguration"));
 
 var app = builder.Build();
 
