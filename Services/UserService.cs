@@ -100,5 +100,13 @@ namespace RotaryClub.Services
                                                                   new ClaimsPrincipal(claimsIdentity),
                                                                   properties);
         }
+
+        public async Task<UserStatus> VerifyUser(string token)
+        {
+            var user = await _userRepository.VerifyToken(token);
+            if (user == null)
+                return new UserStatus("User not found");
+            return new UserStatus();
+        }
     }
 }

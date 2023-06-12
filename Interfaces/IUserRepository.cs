@@ -7,5 +7,6 @@ namespace RotaryClub.Interfaces
         bool CheckIfExists(string email);
         Task<User> GetUser(string email);
         Task AddUser(User user);
+        Task<User> VerifyToken(string token);
     }
 }

@@ -9,5 +9,6 @@ namespace RotaryClub.Interfaces
         void Login (string username, HttpContext httpContext);
         UserStatus CreateUser(UserRegisterViewModel request);
         UserStatus GetUser(string email, string password);
+        Task<UserStatus> VerifyUser(string token);
     }
 }
