@@ -1,15 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 using RotaryClub.Interfaces;
 using RotaryClub.ViewModels;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Security.Claims;
 
 namespace RotaryClub.Controllers
 {
     public class UserController : Controller
     {
         private readonly IUserService _userService;
-        public UserController(IUserService userService) {
+        public UserController(IUserService userService)
+        {
             _userService = userService;
         }
 
@@ -41,7 +43,7 @@ namespace RotaryClub.Controllers
             var status = _userService.CreateUser(request.Email, request.Password);
             if (status.Success)
                 return Redirect("RegisterSuccess");
-            
+
             this.ViewBag.Message = status.ErrorMessage + "!";
             return View(request);
         }
@@ -49,12 +51,15 @@ namespace RotaryClub.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+            ClaimsPrincipal claimUser = claimUser = HttpContext.User;
+            if (claimUser.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Home");
             var model = new UserLoginViewModel();
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult Login(UserLoginViewModel request)
+        public async Task<IActionResult> LoginAsync(UserLoginViewModel request)
         {
             if (request == null)
                 return BadRequest();
@@ -62,9 +67,21 @@ namespace RotaryClub.Controllers
             var status = _userService.GetUser(request.Email, request.Password);
 
             if (status.Success)
+            {
+                _userService.Login(request.Email, HttpContext);
                 return RedirectToAction("Index", "Home");
+            }
+
             this.ViewBag.Message = status.ErrorMessage + "!";
             return View(request);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
         }
     }
 }
