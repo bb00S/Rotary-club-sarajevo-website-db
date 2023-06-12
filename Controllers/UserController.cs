@@ -40,7 +40,7 @@ namespace RotaryClub.Controllers
                 return BadRequest();
             }
 
-            var status = _userService.CreateUser(request.Email, request.Password);
+            var status = _userService.CreateUser(request);
             if (status.Success)
                 return Redirect("RegisterSuccess");
 
