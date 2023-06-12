@@ -1,6 +1,10 @@
-﻿using RotaryClub.Data;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using RotaryClub.Data;
 using RotaryClub.Interfaces;
 using RotaryClub.Models;
+using RotaryClub.ViewModels;
+using System.Security.Claims;
 using System.Security.Cryptography;
 
 namespace RotaryClub.Services
@@ -70,6 +74,26 @@ namespace RotaryClub.Services
             if (!VerifyPasswordHash(password, result.PasswordHash, result.PasswordSalt))
                 return new UserStatus("Incorrect password!");
             return new UserStatus();
+        }
+
+        public async void Login(string username, HttpContext httpContext)
+        {
+            List<Claim> claims = new List<Claim>()
+            {
+                new Claim(ClaimTypes.NameIdentifier, username),
+            };
+            
+            ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            AuthenticationProperties properties = new AuthenticationProperties()
+            {
+                AllowRefresh = true,
+                IsPersistent = true
+            };
+
+            await httpContext.SignInAsync( CookieAuthenticationDefaults.AuthenticationScheme,
+                                                                  new ClaimsPrincipal(claimsIdentity),
+                                                                  properties);
         }
     }
 }
