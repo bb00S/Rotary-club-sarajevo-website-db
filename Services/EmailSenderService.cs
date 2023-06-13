@@ -39,6 +39,53 @@ namespace RotaryClub.Services
             builder.HtmlBody = builder.HtmlBody.Replace("{5}", email.EmailAddress);
             return builder.HtmlBody;
         }
+        private string FillVerificationTemplate(User user)
+        {
+            var path = _env.ContentRootPath +
+                        Path.DirectorySeparatorChar.ToString() +
+                        "wwwroot" +
+                        Path.DirectorySeparatorChar.ToString() +
+                        "emails" +
+                        Path.DirectorySeparatorChar.ToString() +
+                        "VerificationEmail.html";
+            var builder = new BodyBuilder();
+            using (StreamReader SourceReader = File.OpenText(path))
+            {
+                builder.HtmlBody = SourceReader.ReadToEnd();
+            }
+
+            builder.HtmlBody = builder.HtmlBody.Replace("{1}", "https://localhost:7199/User/Verify?token=" + user.VerificationToken);
+            return builder.HtmlBody;
+        }
+        
+        private string FillPaswordResetTemplate(User user)
+        {
+            var path = _env.ContentRootPath +
+                        Path.DirectorySeparatorChar.ToString() +
+                        "wwwroot" +
+                        Path.DirectorySeparatorChar.ToString() +
+                        "emails" +
+                        Path.DirectorySeparatorChar.ToString() +
+                        "ResetPasswordEmail.html";
+            var builder = new BodyBuilder();
+            using (StreamReader SourceReader = File.OpenText(path))
+            {
+                builder.HtmlBody = SourceReader.ReadToEnd();
+            }
+
+            builder.HtmlBody = builder.HtmlBody.Replace("{1}", "https://localhost:7199/User/ResetPassword?token=" + user.PasswordResetToken);
+            return builder.HtmlBody;
+        }
+
+        private void SendEmailAsync(MimeMessage emailRequest)
+        {
+            using var smtp = new MailKit.Net.Smtp.SmtpClient();
+            smtp.Connect(_mailgun.HostName, _mailgun.Port, MailKit.Security.SecureSocketOptions.StartTls);
+            smtp.Authenticate(_mailgun.Username, _mailgun.Password);
+            smtp.Send(emailRequest);
+            smtp.Disconnect(true);
+        }
+
 
         public void SendContactEmail(Email email)
         {
@@ -50,22 +97,24 @@ namespace RotaryClub.Services
             SendEmailAsync(emailRequest);
         }
 
-        public void SendVerificationEmail(Email email)
+        public void SendVerificationEmail(User user)
         {
             var emailRequest = new MimeMessage();
             emailRequest.From.Add(MailboxAddress.Parse(_mailgun.Sender));
-            emailRequest.To.Add(MailboxAddress.Parse(email.EmailAddress));
+            emailRequest.To.Add(MailboxAddress.Parse(user.Email));
             emailRequest.Subject = "Verifikujte vaš račun na Rotary Sarajevo";
-            emailRequest.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = FillTemplate(email) };
+            emailRequest.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = FillVerificationTemplate(user) };
             SendEmailAsync(emailRequest);
         }
-        private void SendEmailAsync(MimeMessage emailRequest)
+        
+        public void SendPasswordResetEmail(User user)
         {
-            using var smtp = new MailKit.Net.Smtp.SmtpClient();
-            smtp.Connect(_mailgun.HostName, _mailgun.Port, MailKit.Security.SecureSocketOptions.StartTls);
-            smtp.Authenticate(_mailgun.Username, _mailgun.Password);
-            smtp.Send(emailRequest);
-            smtp.Disconnect(true);
+            var emailRequest = new MimeMessage();
+            emailRequest.From.Add(MailboxAddress.Parse(_mailgun.Sender));
+            emailRequest.To.Add(MailboxAddress.Parse(user.Email));
+            emailRequest.Subject = "Resetujte vašu lozinku na Rotary Sarajevo";
+            emailRequest.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = FillPaswordResetTemplate(user) };
+            SendEmailAsync(emailRequest);
         }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using RotaryClub.Data;
 using RotaryClub.Interfaces;
 using RotaryClub.Models;
-using RotaryClub.ViewModels;
+using RotaryClub.ViewModels.User;
 using System.Security.Claims;
 using System.Security.Cryptography;
 
@@ -13,10 +13,12 @@ namespace RotaryClub.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IConfiguration _configuration;
-        public UserService(IUserRepository userRepository, IConfiguration configuration)
+        private readonly IEmailSenderService _emailSenderService;
+        public UserService(IUserRepository userRepository, IConfiguration configuration, IEmailSenderService emailSenderService)
         {
             _userRepository = userRepository;
             _configuration = configuration;
+            _emailSenderService = emailSenderService;
         }
 
         private bool CheckIfExists(string email)
@@ -64,7 +66,7 @@ namespace RotaryClub.Services
             };
 
             _userRepository.AddUser(user);
-
+            _emailSenderService.SendVerificationEmail(user);
             return new UserStatus();
         }
 
@@ -106,6 +108,41 @@ namespace RotaryClub.Services
             var user = await _userRepository.VerifyToken(token);
             if (user == null)
                 return new UserStatus("User not found");
+            return new UserStatus();
+        }
+
+        public async Task<UserStatus> CreateResetTokenAsync(string email)
+        {
+            var user = await _userRepository.GetUser(email);
+            if (user == null)
+                return new UserStatus("User not found");
+            user.PasswordResetToken = CreateRandomToken();
+            user.ResetTokenExpires = DateTime.Now.AddDays(2);
+            await _userRepository.UpdateUser(user);
+            _emailSenderService.SendPasswordResetEmail(user);
+            return new UserStatus();
+        }
+
+        public async Task<UserStatus> CheckPasswordToken(string token)
+        {
+            var user = await _userRepository.GetUserByPasswordToken(token);
+            if (user == null)
+                return new UserStatus("User not found");
+            if (user.ResetTokenExpires < DateTime.Now)
+                return new UserStatus("Token has expired");
+            return new UserStatus();
+        }
+
+        public async Task<UserStatus> ResetPassword(ResetPasswordViewModel request)
+        {
+            var user = await _userRepository.GetUserByPasswordToken(request.Token);
+            if (user == null)
+                return new UserStatus("Token doesn't exist");
+            CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+            user.ResetTokenExpires = DateTime.Now.AddHours(-100);
+            await _userRepository.UpdateUser(user);
             return new UserStatus();
         }
     }
