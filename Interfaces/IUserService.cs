@@ -7,11 +7,11 @@ namespace RotaryClub.Interfaces
     { 
 
         void Login (string username, HttpContext httpContext);
-        UserStatus CreateUser(UserRegisterViewModel request);
-        UserStatus GetUser(string email, string password);
-        Task<UserStatus> VerifyUser(string token);
-        Task<UserStatus> CreateResetTokenAsync(string email);
-        Task<UserStatus> CheckPasswordToken(string token);
-        Task<UserStatus> ResetPassword(ResetPasswordViewModel request);
+        Status CreateUser(UserRegisterViewModel request);
+        Status GetUser(string email, string password);
+        Task<Status> VerifyUser(string token);
+        Task<Status> CreateResetTokenAsync(string email);
+        Task<Status> CheckPasswordToken(string token);
+        Task<Status> ResetPassword(ResetPasswordViewModel request);
     }
 }

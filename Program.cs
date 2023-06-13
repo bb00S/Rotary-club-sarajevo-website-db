@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using RotaryClub.Data;
 using RotaryClub.Data.Settings;
 using RotaryClub.Interfaces;
-using RotaryClub.Repository;
 using RotaryClub.Services;
+using RotaryClub.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(option =>
     {
@@ -24,9 +24,12 @@ builder.Services.AddDbContext<DataContext>(options =>
 });
 //Dependency Injection
 builder.Services.AddSingleton<IFacebookService, FacebookService>();
+builder.Services.AddScoped<IEmailSenderService, EmailSenderService>();
+builder.Services.AddScoped<IPhotoService, PhotoService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IEmailSenderService, EmailSenderService>();
+builder.Services.AddScoped<IMemberService, MemberService>();
+builder.Services.AddScoped<IMemberRepository, MemberRepository>();
 
 //Konfiguracije
 builder.Services.Configure<FacebookSettings>(builder.Configuration.GetSection("Facebook"));
