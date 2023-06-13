@@ -3,7 +3,7 @@ using RotaryClub.Data;
 using RotaryClub.Interfaces;
 using RotaryClub.Models;
 
-namespace RotaryClub.Repository
+namespace RotaryClub.Repositories
 {
     public class UserRepository : IUserRepository
     {
