@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RotaryClub.ViewModels
+namespace RotaryClub.ViewModels.User
 {
     public class UserRegisterViewModel
     {

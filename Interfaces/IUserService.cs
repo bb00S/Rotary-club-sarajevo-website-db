@@ -1,5 +1,5 @@
 ﻿using RotaryClub.Data;
-using RotaryClub.ViewModels;
+using RotaryClub.ViewModels.User;
 
 namespace RotaryClub.Interfaces
 {
@@ -10,5 +10,8 @@ namespace RotaryClub.Interfaces
         UserStatus CreateUser(UserRegisterViewModel request);
         UserStatus GetUser(string email, string password);
         Task<UserStatus> VerifyUser(string token);
+        Task<UserStatus> CreateResetTokenAsync(string email);
+        Task<UserStatus> CheckPasswordToken(string token);
+        Task<UserStatus> ResetPassword(ResetPasswordViewModel request);
     }
 }

@@ -1,7 +1,7 @@
-﻿@using RotaryClub.ViewModels;
+﻿@using RotaryClub.ViewModels.User;
 @model UserRegisterViewModel;
 @{
-    ViewData["Title"] = "Kreiraj račun";
+    ViewData["Title"] = "Register";
 }
 
 <div class="container">
@@ -29,7 +29,7 @@
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
         <div class="form-group mb-2">
-            <label for="Keyword">Confirm password</label>
+            <label for="Keyword">Keyword</label>
             <input asp-for="Keyword" type="password" class="form-control" id="Keyword" placeholder="Keyword" required>
             <span asp-validation-for="Keyword" class="text-danger"></span>
         </div>

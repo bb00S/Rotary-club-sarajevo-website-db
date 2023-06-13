@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using RotaryClub.Interfaces;
-using RotaryClub.ViewModels;
 using System.Security.Claims;
 using RotaryClub.Models;
+using RotaryClub.ViewModels.User;
 
 namespace RotaryClub.Controllers
 {
@@ -43,13 +43,19 @@ namespace RotaryClub.Controllers
 
             var status = _userService.CreateUser(request);
             if (status.Success)
-                return RedirectToAction("SendVerificationEmail", "Email", new Email()
-                {
-                    EmailAddress = request.Email,
-                });
+                return View("RegisterSuccess");
 
             this.ViewBag.Message = status.ErrorMessage + "!";
             return View(request);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Verify(string token)
+        {
+            var response = await _userService.VerifyUser(token);
+            if (response.Success)
+                return View("VerificationSuccess");
+            return BadRequest(response.ErrorMessage);
         }
 
         [HttpGet]
@@ -62,33 +68,72 @@ namespace RotaryClub.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Verify(string token)
-        {
-            var response = await _userService.VerifyUser(token);
-            if (response.Success)
-                 return View("VerificationSuccess");
-            return BadRequest();
-        }
 
         [HttpPost]
-        public async Task<IActionResult> LoginAsync(UserLoginViewModel request)
+        public Task<IActionResult> Login(UserLoginViewModel request)
         {
             if (request == null)
-                return BadRequest();
+                return Task.FromResult<IActionResult>(BadRequest());
 
             var status = _userService.GetUser(request.Email, request.Password);
 
             if (status.Success)
             {
                 _userService.Login(request.Email, HttpContext);
-                return RedirectToAction("Index", "Home");
+                return Task.FromResult<IActionResult>(RedirectToAction("Index", "Home"));
             }
 
             this.ViewBag.Message = status.ErrorMessage + "!";
-            return View(request);
+            return Task.FromResult<IActionResult>(View(request));
         }
 
+
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(string email)
+        {
+            var response = await _userService.CreateResetTokenAsync(email);
+            if (response.Success)
+                return View("ResetSent");
+            return BadRequest(response.ErrorMessage);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ResetPassword(string token)
+        {
+            var response = await _userService.CheckPasswordToken(token);
+            if (!response.Success)
+                return BadRequest(response.ErrorMessage);
+            var vm = new ResetPasswordViewModel()
+            {
+                Token = token
+            };
+            return View(vm);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("ResetPassword", request);
+            }
+            if (request == null)
+            {
+                return BadRequest();
+            }
+
+            var response = await _userService.ResetPassword(request);
+            if (!response.Success)
+                return BadRequest(response.ErrorMessage);
+
+            return RedirectToAction("Login");
+        }
 
         [HttpPost]
         public async Task<IActionResult> Logout()

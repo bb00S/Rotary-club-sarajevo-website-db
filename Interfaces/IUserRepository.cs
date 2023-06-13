@@ -8,5 +8,7 @@ namespace RotaryClub.Interfaces
         Task<User> GetUser(string email);
         Task AddUser(User user);
         Task<User> VerifyToken(string token);
+        Task<User> GetUserByPasswordToken(string token);
+        Task UpdateUser(User user);
     }
 }
