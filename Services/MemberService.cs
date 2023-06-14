@@ -17,7 +17,7 @@ namespace RotaryClub.Services
         }
         public async Task<Status> Create(CreateMemberViewModel viewModel)
         {
-            var photoPath = await _photoService.Create(viewModel.Photo);
+            var photoPath = await _photoService.Create(viewModel.Photo, "members");
             if (photoPath == null)
                 return new Status("Photo upload failed");
             Member member = new()
@@ -33,22 +33,34 @@ namespace RotaryClub.Services
             return await _memberRepository.Create(member);
         }
 
-        public Task<Status> Delete(CreateMemberViewModel viewModel)
+        public async Task<Status> Delete(int id)
         {
-            throw new NotImplementedException();
+            var member = await _memberRepository.GetById(id);
+            if (member == null)
+                return new Status("Member not found");
+
+            var status = _photoService.Delete(member.PhotoUrl);
+            if (!status.Success)
+                return status;
+
+            status = await _memberRepository.Delete(member);
+            if (!status.Success)
+                return status;
+
+            return new Status();
         }
 
         public Task<IEnumerable<Member>> GetAll()
         {
-            throw new NotImplementedException();
+            return _memberRepository.GetAll();
         }
 
         public Task<Member> GetById(int id)
         {
-            throw new NotImplementedException();
+            return _memberRepository.GetById(id);
         }
 
-        public Task<Status> Update(CreateMemberViewModel viewModel)
+        public Task<Status> Update(int id, CreateMemberViewModel viewModel)
         {
             throw new NotImplementedException();
         }

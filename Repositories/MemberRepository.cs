@@ -1,4 +1,5 @@
-﻿using RotaryClub.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using RotaryClub.Data;
 using RotaryClub.Interfaces;
 using RotaryClub.Models;
 
@@ -30,22 +31,24 @@ namespace RotaryClub.Repositories
 
         public Task<Status> Delete(Member member)
         {
-            throw new NotImplementedException();
+            _context.Remove(member);
+            return Save();
         }
 
-        public Task<IEnumerable<Member>> GetAll()
+        public async Task<IEnumerable<Member>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _context.Members.OrderBy(x => x.Name).ToListAsync();
         }
 
-        public Task<Member> GetById(int id)
+        public async Task<Member> GetById(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Members.FirstOrDefaultAsync(u => u.Id == id);
         }
 
-        public Task<Status> Update(Member member)
+        public async Task<Status> Update(Member member)
         {
-            throw new NotImplementedException();
+            _context.Members.Update(member);
+            return await Save();
         }
     }
 }
