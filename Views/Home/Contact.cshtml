@@ -1,6 +1,103 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@removeTagHelper Microsoft.AspNetCore.Mvc.Razor.TagHelpers.BodyTagHelper, Microsoft.AspNetCore.Mvc.Razor
+@model Email;
 @{
     ViewData["Title"] = "Contact";
+}
+<section id="contact" class="contact">
+    <div class="container my-5">
+        <div class="d-flex justify-content-center">
+            <p class="badge rounded-pill text-bg-primary p-2">Contact</p>
+        </div>
+        <div class="d-flex justify-content-center">
+            <h2 class="h2 heading-2">Contact <strong class="">Us</strong></h2>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 mb-3 mb-lg-0">
+                <div class="card h-100">
+                    <div class="card-body d-flex flex-column justify-content-center " id="info">
+                        <div class="row">
+                            <div class="info-box mb-4">
+                                <i class="bi bi-geo-alt"></i>
+                                <h3>Our Address</h3>
+                                <p id="address">
+                                    Kemal Begova 1,
+                                    71000 Sarajevo,
+                                    Bosnia and Herzegovina
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                                <div class="info-box mb-4">
+                                    <i class="bi bi-envelope-at"></i>
+                                    <h3>Email Us</h3>
+                                    <p id="email">info@finit.ba</p>
+                                </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="info-box mb-4">
+                                <i class="bi bi-telephone-outbound"></i>
+                                <h3>Call Us</h3>
+                                <p id="phone">+387 (0)33 842 253</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <form method="post" action="@Url.Action("SendContactEmail", "Email")" enctype="multipart/form-data" class="needs-validation" id="contact-form" novalidate>
+                    <div class="row g-2 mb-3">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="name" asp-for="Name" placeholder="John" required>
+                                <label for="name">Name</label>
+                                <div class="invalid-feedback">
+                                    Please enter your name.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="lastname" asp-for="Lastname" placeholder="Doe" required>
+                                <label for="lastname">Lastname</label>
+                                <div class="invalid-feedback">
+                                    Please enter your lastname.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="email" asp-for="EmailAddress" placeholder="name@example.com" required>
+                        <label for="email">Email address</label>
+                        <div class="invalid-feedback">
+                            Please enter your email.
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="phone" asp-for="PhoneNumber" placeholder="555-2548" required>
+                        <label for="phone">Phone number</label>
+                        <div class="invalid-feedback">
+                            Please enter your phone number.
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control comment" placeholder="Leave your comment here" id="comment" asp-for="Message" required></textarea>
+                        <label for="comment">Comment</label>
+                        <div class="invalid-feedback">
+                            Please leave your comment.
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts
+{
+    <script type="text/javascript" src="~/js/formValidation.js" defer></script>
 }
