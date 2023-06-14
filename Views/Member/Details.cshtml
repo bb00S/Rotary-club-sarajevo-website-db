@@ -1,0 +1,18 @@
+﻿@model Member;
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <img src="@Model.PhotoUrl" alt="@Model.Name" class="img-fluid" />
+        </div>
+        <div class="col-6">
+            <h1>@Model.Name</h1>
+            <p>Web: @(Model.Website??"")</p>
+            <p>Email: @(Model.Email ?? "")</p>
+            <p>Pocasni clan: @(Model.Honorary?"Da":"Ne")</p>
+        </div>
+    </div>
+</div>
