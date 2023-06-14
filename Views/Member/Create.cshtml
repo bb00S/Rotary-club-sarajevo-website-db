@@ -1,7 +1,7 @@
 ﻿@using RotaryClub.ViewModels.Member
 @model CreateMemberViewModel
 @{
-    ViewData["Title"] = "Create member";
+    ViewData["Title"] = "Kreiraj člana";
     Layout = "Admin/_Layout";
 }
 
@@ -9,31 +9,31 @@
     <h1 class="mb-3">Create new member</h1>
     <form method="post" asp-action="Create" enctype="multipart/form-data" class="needs-validation" novalidate>
         <div class="mb-3">
-            <label for="name" class="form-label">Name and lastname</label>
+            <label for="name" class="form-label">Ime i prezime</label>
             <input asp-for="Name" type="text" class="form-control" id="name" placeholder="John Doe" required>
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
+            <label for="email" class="form-label">Email adresa</label>
             <input asp-for="Email" type="email" class="form-control" id="email" placeholder="name@example.com">
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label for="website" class="form-label">Website (Facebook/LinkedIn)</label>
+            <label for="website" class="form-label">Web (Facebook/LinkedIn)</label>
             <input asp-for="Website" type="text" class="form-control" id="website" placeholder="https://www.facebook.com/zuck">
             <span asp-validation-for="Website" class="text-danger"></span>
         </div>
         <div class="form-check form-switch mb-3">
-            <label class="form-check-label" for="honorary"> Honorary member?</label>
+            <label class="form-check-label" for="honorary"> Počasni član?</label>
             <input asp-for="Honorary" class="form-check-input" type="checkbox" role="switch" id="honorary">
             <span asp-validation-for="Honorary" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label for="formFile" class="form-label">Member photo</label>
+            <label for="formFile" class="form-label">Fotografija člana</label>
             <input asp-for="Photo" class="form-control" type="file" id="formFile" required>
             <span asp-validation-for="Photo" class="text-danger"></span>
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-primary" type="submit">Kreiraj člana</button>
     </form>
 </div>
 

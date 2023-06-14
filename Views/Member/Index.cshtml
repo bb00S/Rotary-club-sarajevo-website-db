@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Member>;
 @{
-    ViewData["Title"] = "Members";
+    ViewData["Title"] = "Članovi";
     Layout = "Admin/_Layout";
     int n = 1;
 }
@@ -9,9 +9,9 @@
     <table class="table table-striped">
         <thead class="table-dark">
             <th>#</th>
-            <th>Name</th>
-            <th>Date updated</th>
-            <th>Actions</th>
+            <th>Ime</th>
+            <th>Datum posljednje izmjene</th>
+            <th>Opcije</th>
         </thead>
         <tbody>
             @foreach(var member in Model)
@@ -21,9 +21,9 @@
                     <td>@member.Name</td>
                     <td>@(member.UpdatedAt.ToString("dd.MM.yyyy."))</td>
                     <td>
-                        <a class="btn btn-primary" asp-route-id="@member.Id" asp-action="Details">Details</a>
-                        <a class="btn btn-success" asp-route-id="@member.Id" asp-action="Edit">Edit</a>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="@member.Id" data-bs-name="@member.Name">Delete</button>
+                        <a class="btn btn-primary" asp-route-id="@member.Id" asp-action="Details">Detalji</a>
+                        <a class="btn btn-success" asp-route-id="@member.Id" asp-action="Edit">Uredi</a>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="@member.Id" data-bs-name="@member.Name">Izbriši</button>
                     </td>
                 </tr>
             }
@@ -43,9 +43,9 @@
                 ...
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
                 <form asp-controller="Member" asp-action="Delete" id="delete" method="post">
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger">Izbriši</button>
                 </form>
             </div>
         </div>
