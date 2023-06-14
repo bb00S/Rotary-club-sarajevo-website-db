@@ -40,6 +40,25 @@ namespace RotaryClub.Controllers
             return BadRequest(response.ErrorMessage);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var member = await _memberService.GetById(id);
+            ViewBag.Id = id;
+            return View(member.ToEditViewModel());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, EditMemberViewModel editMemberVM)
+        {
+            if(!ModelState.IsValid)
+                return View(editMemberVM);
+            var status = await _memberService.Update(id, editMemberVM);
+            if (status.Success)
+                return RedirectToAction("Index");
+            return BadRequest(status.ErrorMessage);          
+        }
+
 
         [HttpGet]
         public async Task<IActionResult> DetailsAsync(int id)
