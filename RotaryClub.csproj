@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <None Include="Views\Member\Index.cshtml" />
+    <None Include="wwwroot\lib\bootstrap-icons\bootstrap-icons.scss" />
+    <None Include="wwwroot\lib\bootstrap-icons\fonts\bootstrap-icons.woff2" />
   </ItemGroup>
 
   <ItemGroup>

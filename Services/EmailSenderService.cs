@@ -36,7 +36,6 @@ namespace RotaryClub.Services
             builder.HtmlBody = builder.HtmlBody.Replace("{2}", email.EmailAddress);
             builder.HtmlBody = builder.HtmlBody.Replace("{3}", email.PhoneNumber);
             builder.HtmlBody = builder.HtmlBody.Replace("{4}", email.Message);
-            builder.HtmlBody = builder.HtmlBody.Replace("{5}", email.EmailAddress);
             return builder.HtmlBody;
         }
         private string FillVerificationTemplate(User user)
@@ -92,7 +91,7 @@ namespace RotaryClub.Services
             var emailRequest = new MimeMessage();
             emailRequest.From.Add(MailboxAddress.Parse(_mailgun.Sender));
             emailRequest.To.Add(MailboxAddress.Parse(_mailgun.Reciever));
-            emailRequest.Subject = "Novi upit na FINIT web stranici";
+            emailRequest.Subject = "Novi upit na Rotary Sarajevo web stranici";
             emailRequest.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = FillTemplate(email) };
             SendEmailAsync(emailRequest);
         }
