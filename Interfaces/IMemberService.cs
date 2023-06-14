@@ -9,7 +9,7 @@ namespace RotaryClub.Interfaces
         Task<IEnumerable<Member>> GetAll();
         Task<Member> GetById(int id);
         Task<Status> Create(CreateMemberViewModel viewModel);
-        Task<Status> Update(int id, CreateMemberViewModel viewModel);
+        Task<Status> Update(int id, EditMemberViewModel viewModel);
         Task<Status> Delete(int id);
     }
 }

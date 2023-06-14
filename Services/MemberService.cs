@@ -60,9 +60,20 @@ namespace RotaryClub.Services
             return _memberRepository.GetById(id);
         }
 
-        public Task<Status> Update(int id, CreateMemberViewModel viewModel)
+        public async Task<Status> Update(int id, EditMemberViewModel viewModel)
         {
-            throw new NotImplementedException();
+            var member = await _memberRepository.GetById(id);
+            if (viewModel.Photo != null)
+            {
+                _photoService.Delete(member.PhotoUrl);
+                member.PhotoUrl = await _photoService.Create(viewModel.Photo, "members");
+            }
+            member.Email = viewModel.Email;
+            member.Honorary = viewModel.Honorary;
+            member.Website = viewModel.Website;
+            member.UpdatedAt = DateTime.Now;
+            member.Name = viewModel.Name;
+            return await _memberRepository.Update(member);
         }
     }
 }
