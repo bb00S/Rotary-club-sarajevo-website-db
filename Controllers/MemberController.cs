@@ -14,9 +14,10 @@ namespace RotaryClub.Controllers
             _memberService = memberService;
         }
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
-            return View();
+            var members = await _memberService.GetAll();
+            return View(members);
         }
 
         [HttpGet]
@@ -30,13 +31,12 @@ namespace RotaryClub.Controllers
         public async Task<IActionResult> Create(CreateMemberViewModel createMemberVM)
         {
             if (!ModelState.IsValid)
-            {
                 return View(createMemberVM);
-            }
 
             var response = await _memberService.Create(createMemberVM);
             if (response.Success)
                 return RedirectToAction("Index");
+            
             return BadRequest(response.ErrorMessage);
         }
 
@@ -46,9 +46,7 @@ namespace RotaryClub.Controllers
         {
             var member = await _memberService.GetById(id);
             if (member == null)
-            {
                 return NotFound();
-            }
             return View(member);
         }
 
