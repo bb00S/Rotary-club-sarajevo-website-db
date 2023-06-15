@@ -10,10 +10,12 @@ namespace RotaryClub.Services
     {
         private readonly IHostEnvironment _env;
         private readonly MailgunSettings _mailgun;
-        public EmailSenderService(IHostEnvironment env, IOptions<MailgunSettings> mailgun)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public EmailSenderService(IHostEnvironment env, IOptions<MailgunSettings> mailgun, IHttpContextAccessor httpContextAccessor)
         {
             _mailgun = mailgun.Value;
             _env = env;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         private string FillTemplate(Email email)
@@ -53,7 +55,10 @@ namespace RotaryClub.Services
                 builder.HtmlBody = SourceReader.ReadToEnd();
             }
 
-            builder.HtmlBody = builder.HtmlBody.Replace("{1}", "https://localhost:7199/User/Verify?token=" + user.VerificationToken);
+
+            var scheme = _httpContextAccessor.HttpContext?.Request.Scheme;
+            var host = _httpContextAccessor.HttpContext?.Request.Host.Value;
+            builder.HtmlBody = builder.HtmlBody.Replace("{1}", $"{scheme}://{host}/User/Verify?token=" + user.VerificationToken);
             return builder.HtmlBody;
         }
         
@@ -72,7 +77,10 @@ namespace RotaryClub.Services
                 builder.HtmlBody = SourceReader.ReadToEnd();
             }
 
-            builder.HtmlBody = builder.HtmlBody.Replace("{1}", "https://localhost:7199/User/ResetPassword?token=" + user.PasswordResetToken);
+            var scheme = _httpContextAccessor.HttpContext?.Request.Scheme;
+            var host = _httpContextAccessor.HttpContext?.Request.Host.Value;
+
+            builder.HtmlBody = builder.HtmlBody.Replace("{1}", $"{scheme}://{host}/User/ResetPassword?token=" + user.PasswordResetToken);
             return builder.HtmlBody;
         }
 
