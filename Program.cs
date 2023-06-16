@@ -5,6 +5,7 @@ using RotaryClub.Data.Settings;
 using RotaryClub.Interfaces;
 using RotaryClub.Services;
 using RotaryClub.Repositories;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,13 +25,13 @@ builder.Services.AddDbContext<DataContext>(options =>
 });
 //Dependency Injection
 builder.Services.AddSingleton<IFacebookService, FacebookService>();
+builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IEmailSenderService, EmailSenderService>();
 builder.Services.AddScoped<IPhotoService, PhotoService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IMemberService, MemberService>();
 builder.Services.AddScoped<IMemberRepository, MemberRepository>();
-
 //Konfiguracije
 builder.Services.Configure<FacebookSettings>(builder.Configuration.GetSection("Facebook"));
 builder.Services.Configure<MailgunSettings>(builder.Configuration.GetSection("EmailConfiguration"));

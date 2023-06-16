@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using RotaryClub.Data;
+using RotaryClub.Helpers;
 using RotaryClub.Interfaces;
 using RotaryClub.Models;
 using RotaryClub.ViewModels.User;
@@ -24,29 +25,7 @@ namespace RotaryClub.Services
         private bool CheckIfExists(string email)
         {
             return _userRepository.CheckIfExists(email);
-        }
-        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
-        {
-            using (var hmac = new HMACSHA512())
-            {
-                passwordSalt = hmac.Key;
-                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-            }
-        }
-
-        private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
-        {
-            using (var hmac = new HMACSHA512(passwordSalt))
-            {
-                var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-                return computedHash.SequenceEqual(passwordHash);
-            }
-        }
-
-        private string CreateRandomToken()
-        {
-            return Convert.ToHexString(RandomNumberGenerator.GetBytes(64));
-        }
+        }        
 
         public Status CreateUser(UserRegisterViewModel request)
         {
@@ -56,13 +35,13 @@ namespace RotaryClub.Services
             if (CheckIfExists(request.Email))
                 return new Status("User already exists");
             
-            CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
+            HashFunctions.CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
             var user = new User
             {
                 Email = request.Email,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
-                VerificationToken = CreateRandomToken()
+                VerificationToken = HashFunctions.CreateRandomToken()
             };
 
             _userRepository.AddUser(user);
@@ -73,12 +52,12 @@ namespace RotaryClub.Services
         public Status GetUser(string email, string password)
         {
             var user = _userRepository.GetUser(email);
-            if (user == null)
+            if (user == null || user.Result==null)
                 return new Status("User not found");
             var result = user.Result;
             if (result.VerifiedAt == null)
                 return new Status("User not verified! Please check your email.");
-            if (!VerifyPasswordHash(password, result.PasswordHash, result.PasswordSalt))
+            if (!HashFunctions.VerifyPasswordHash(password, result.PasswordHash, result.PasswordSalt))
                 return new Status("Incorrect password!");
             return new Status();
         }
@@ -116,7 +95,7 @@ namespace RotaryClub.Services
             var user = await _userRepository.GetUser(email);
             if (user == null)
                 return new Status("User not found");
-            user.PasswordResetToken = CreateRandomToken();
+            user.PasswordResetToken = HashFunctions.CreateRandomToken();
             user.ResetTokenExpires = DateTime.Now.AddDays(2);
             await _userRepository.UpdateUser(user);
             _emailSenderService.SendPasswordResetEmail(user);
@@ -138,7 +117,7 @@ namespace RotaryClub.Services
             var user = await _userRepository.GetUserByPasswordToken(request.Token);
             if (user == null)
                 return new Status("Token doesn't exist");
-            CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
+            HashFunctions.CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
             user.ResetTokenExpires = DateTime.Now.AddHours(-100);
