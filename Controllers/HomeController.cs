@@ -23,11 +23,17 @@ namespace RotaryClub.Controllers
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult Sarajevo()
         {
             return View();
         }
-        public IActionResult Sarajevo()
+
+        public IActionResult Projekti()
+        {
+            return View();
+        }
+
+        public IActionResult Contact()
         {
             return View();
         }
