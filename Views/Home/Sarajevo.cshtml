@@ -1,8 +1,106 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-    ViewData["Title"] = "O Sarajevu";
-}
+﻿    <head>
+        @section Styles{
+            <link rel="stylesheet" href="~/css/user.css" />
+        }
+        @{
+            ViewData["Title"] = "O Sarajevu";
+        }
 
-<h1>O Sarajevu</h1>
+    <script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202308010102/show_ads_impl_fy2021.js" id="google_shimpl"></script><script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.counter-value').each(function () {
+                $(this).prop('Counter', 0).animate({
+                    Counter: $(this).text()
+                }, {
+                    duration: 3500,
+                    easing: 'swing',
+                    step: function (now) {
+                        $(this).text(Math.ceil(now));
+                    }
+                });
+            });
+        });
+
+    </script>
+    </head>
+
+ <body>
+    <section class="hero1">
+        <div class="hero-inner">
+            <h1>O Sarajevu</h1>
+            <h2>
+                Sarajevo je glavni grad države Bosne i Hercegovine. Ono je njen administrativni, privredni, kulturni, univerzitetski i sportski centar.    
+            </h2>
+        </div>
+    </section>
+
+    <p>
+    </p>
+    <p>
+    </p>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="counter">
+                    <div class="counter-content">
+                        <div class="counter-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h3>Populacija</h3>
+                    </div>
+                    <span class="counter-value">242</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="counter">
+                    <div class="counter-content">
+                        <div class="counter-icon">
+                            <i class="bi bi-bank"></i>
+                        </div>
+                        <h3>GDP</h3>
+                    </div>
+                    <span class="counter-value">228</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="counter">
+                    <div class="counter-content">
+                        <div class="counter-icon">
+                            <i class="bi bi-globe"></i>
+                        </div>
+                        <h3>Površina</h3>
+                    </div>
+                    <span class="counter-value">242</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="counter">
+                    <div class="counter-content">
+                        <div class="counter-icon">
+                            <i class="bi bi-thermometer-sun"></i>
+                        </div>
+                        <h3>Klima</h3>
+                    </div>
+                    <span class="counter-value">228</span>
+                </div>
+            </div>
+        </div>
+    </div>
+        <p>
+        </p>
+    <div class="container">
+        <p class="semi-bold text-justify-left">
+            <a>
+                Položaj:
+                Sarajevo je smješteno na prostoru Sarajevskog polja, koje je okruženo planinama Bjelašnicom i Igmanom na jugozapadu, Trebevićem na jugoistoku, te srednjim planinama i međudolinskim rtovima na sjeveru i sjeverozapadu.
+                Prosječna nadmorska visina Sarajevskog polja je 500 m.
+                Najzapadnija tačka polja je na 180 16' istočne geografske dužine. 
+                Krajnja istočna tačka je na 180 27' istočne geografske dužine, najsjevernija je 430 53’ sjeverne geografske širine, a najjužnija je na 430 47' sjeverne geografske širine.
+            </a>
+         </p>
+    </div>  
+ </body>
+
