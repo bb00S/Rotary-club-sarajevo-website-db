@@ -116,6 +116,29 @@
         text-shadow: 0 1px 0 rgba(0,0,0,.55);
     }
 
+    .hero3 {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        background-image: url('https://cdn2.webdamdb.com/md_gVfp2pDPdHf516r7.jpg?1684358128');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .hero3 h1 {
+        font-size: 5em;
+        margin-top: 0;
+        margin-bottom: 0.5em;
+        color: #f7a81b;
+        text-shadow: 0 1px 0 rgba(0,0,0,.55);
+    }
+
     /*brojaci*/
 
     .counter {
