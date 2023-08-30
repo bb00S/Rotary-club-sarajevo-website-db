@@ -34,14 +34,13 @@
         text-align: justify
     }
 
-    .h2-secondary {
-        font-family: SpaceGrotesk-Light;
-        color: #0A0A0A;
-        line-height: 1.2;
-        font-weight: 500;
-        font-size: 64px;
-        margin-bottom: 40px;
-    }
+.h2-secondary {
+    font-family: HelveticaNeue-Light,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif !important;
+    color: #39424a !important;
+    font-weight: 300;
+    text-align: center;
+    font-size: 3.6rem;
+}
 
     .container-fluid {
     height: 100%;
@@ -78,7 +77,7 @@
         align-items: center;
         text-align: center;
         color: white;
-        background-image: url('https://media.istockphoto.com/id/683997960/photo/sebilj-fountain-in-the-old-town-of-sarajevo-bosnia.jpg?s=612x612&w=0&k=20&c=40rxhXjrJJ-NyuxwSOhV8OinnPu8_kdN8ts98bw031Y=');
+        background-image: url(~/img/about-hero.jpg);
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
@@ -101,7 +100,7 @@
         align-items: center;
         text-align: center;
         color: white;
-        background-image: url('https://cdn2.webdamdb.com/md_A0SOPK9ZDlM12QQw.jpg?1689025903');
+        background-image: url(~/img/sarajevo-hero.jpg);
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
@@ -124,7 +123,7 @@
         align-items: center;
         text-align: center;
         color: white;
-        background-image: url('https://cdn2.webdamdb.com/md_gVfp2pDPdHf516r7.jpg?1684358128');
+        background-image: url(~/img/projects-hero.jpg);
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
@@ -138,6 +137,7 @@
         color: #f7a81b;
         text-shadow: 0 1px 0 rgba(0,0,0,.55);
     }
+
     /*brojaci*/
 
     .counter {
