@@ -34,3 +34,4 @@ msbuild.wrn
 .vs/
 
 /wwwroot/images/members
+/Views/Home/Projekti.cshtml
