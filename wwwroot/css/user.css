@@ -273,3 +273,39 @@
         margin-top: 50px;
         border: none;
     }
+
+.card {
+
+}
+
+.content {
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.card:hover .content {
+    transform: rotateY( 180deg );
+    transition: transform 0.5s;
+}
+
+.front h5 {
+    text-align: center;
+}
+
+.back h5 {
+    text-align: center;
+}
+
+.front,
+.back {
+    backface-visibility: hidden;
+}
+    
+.back {
+    transform: rotateY( 180deg );
+}
+
+.card-img-overlay {
+    width: 100%; 
+    align-self: stretch 
+}
