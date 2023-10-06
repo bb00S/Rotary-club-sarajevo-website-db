@@ -1,38 +1,56 @@
-﻿@using RotaryClub.ViewModels.User;
-@model UserRegisterViewModel;
-@{
-    ViewData["Title"] = "Registruj se";
-}
-
-<div class="container">
-    @if(ViewBag.Message != null)
-    {
-        <div class="alert alert-danger" role="alert">
-           @ViewBag.Message
-        </div>
+﻿    <head>
+    @using RotaryClub.ViewModels.User;
+    @model UserRegisterViewModel;
+    @{
+        ViewData["Title"] = "Registruj se";
     }
-    <form method="post" asp-action="Register" enctype="multipart/form-data">
-        <div class="form-group mb-2">
-            <label for="email">Email adresa</label>
-            <input asp-for="Email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Unesite email adresu" required>
-                <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
-        <div class="form-group mb-2">
-            <label for="password">Lozinka</label>
-            <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Lozinka" required>
-            <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
-        <div class="form-group mb-2">
-            <label for="confirmPassword">Potvrda lozinke</label>
-            <input asp-for="ConfirmPassword" type="password" class="form-control" id="confirmPassword" placeholder="Ponovno unesite lozinku" required>
-            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-        </div>
-        <div class="form-group mb-2">
-            <label for="Keyword">Ključ</label>
-            <input asp-for="Keyword" type="password" class="form-control" id="Keyword" placeholder="Ključ" required>
-            <span asp-validation-for="Keyword" class="text-danger"></span>
-        </div>
+    </head>
+    <body>
+        <section class="d-flex justify-content-center align-items-center h-80">
+            <img class="" src="~/img/login.png" />
+        </section>
+
+        <section class="vh-100">
+            <div class="container-fluid h-custom">
+                @if(ViewBag.Message != null)
+                {
+                    <div class="alert alert-danger" role="alert">
+                       @ViewBag.Message
+                    </div>
+                }
+
+            <div class="button-wrapper-cta">
+                <a class="button-cta cta-button" href="">DONACIJE</a>
+            </div>
+
+            <hr />
+        <div class="container">
+            <form method="post" asp-action="Register" enctype="multipart/form-data">
+                <div class="form-group mb-2">
+                    <label for="email">Email adresa</label>
+                    <input asp-for="Email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Unesite email adresu" required>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="password">Lozinka</label>
+                    <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Lozinka" required>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="confirmPassword">Potvrda lozinke</label>
+                    <input asp-for="ConfirmPassword" type="password" class="form-control" id="confirmPassword" placeholder="Ponovno unesite lozinku" required>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="Keyword">Ključ</label>
+                    <input asp-for="Keyword" type="password" class="form-control" id="Keyword" placeholder="Ključ" required>
+                    <span asp-validation-for="Keyword" class="text-danger"></span>
+                </div>
         
-        <button type="submit" class="btn btn-primary">Registruj se</button>
-    </form>
-</div>
+                <button id="register" type="submit" class="btn btn-primary">Registruj se</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+</body>
