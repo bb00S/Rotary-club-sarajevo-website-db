@@ -1,28 +1,61 @@
-﻿@using RotaryClub.ViewModels.User;
-@model UserLoginViewModel;
-@{
-    ViewData["Title"] = "Prijava";
-}
+﻿<header>
 
-<div class="container">
-    @if (ViewBag.Message != null)
-    {
-        <div class="alert alert-danger" role="alert">
-            @ViewBag.Message
-        </div>
+    @using RotaryClub.ViewModels.User;
+    @model UserLoginViewModel;
+    @{
+        ViewData["Title"] = "Prijava";
     }
-    <form method="post" asp-action="Login" enctype="multipart/form-data">
-        <div class="form-group mb-2">
-            <label for="email">Email adresa</label>
-            <input asp-for="Email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Unesite email adresu" required>
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
-        <div class="form-group mb-2">
-            <label for="password">Lozinka</label>
-            <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Lozinka" required>
-            <span asp-validation-for="Password" class="text-danger"></span>
-            <a asp-action="ForgotPassword">Zaboravili ste lozinku?</a>
-        </div>
-        <button type="submit" class="btn btn-primary">Uloguj se</button>
-    </form>
-</div>
+
+</header>
+
+<body>
+    <section class="d-flex justify-content-center align-items-center h-80">
+        <img class= "" src="~/img/login.png" />
+    </section>
+
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+            @if (ViewBag.Message != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ViewBag.Message
+                </div>
+            }
+
+            <div class="button-wrapper-cta">
+                <a class="button-cta cta-button" href="">DONACIJE</a>
+            </div>
+
+            <hr />
+
+            <div class="row d-flex justify-content-center align-items-center h-70">
+                <div class="col-md-8 col-lg-6 col-xl-4">
+                    <img src="~/img/inspire-home.jpg"
+                         class="img-fluid" alt="Sample image">
+                </div>
+                    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                    <p class="text-center lead fw-normal mb-0 me-3">PRIJAVA</p>
+                        <form method="post" asp-action="Login" enctype="multipart/form-data">
+                            <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                                <div class="form-outline mb-4 form-control form-control-lg">
+                                    <label for="email">Email</label>
+                                    <input asp-for="Email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Unesite email adresu" required>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                                <div class="form-outline mb-4 form-control form-control-lg">
+                                    <label for="password">Lozinka</label>
+                                    <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Lozinka" required>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                    <a asp-action="ForgotPassword">Zaboravili ste lozinku?</a>
+                                </div>
+                            </div>
+                            <button id="ulog" type="submit" class="btn btn-primary">Uloguj se</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+   </section>
+
+ </body>
