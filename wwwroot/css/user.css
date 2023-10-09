@@ -10,6 +10,7 @@
         padding: 0px;
         overflow-x: hidden;
     }
+
     body {
         background-color: #ffffff;
     }
@@ -375,4 +376,31 @@
     #register {
         background-color: #0050a2;
         color: #fff !important;
+    }
+
+    .cascading-right {
+        margin-right: -50px;
+        background: hsla(0, 0%, 100%, 0.55);
+        backdrop-filter: blur(30px);
+        padding-right:5px;
+    }
+    .cascading-right1 {
+        margin-right: -40px;
+        background: hsla(0, 0%, 100%, 0.55);
+        backdrop-filter: blur(30px);
+        padding-right: 5px;
+    }
+    * {
+        box-sizing: border-box;
+    }
+
+    .item {
+        width: 200px;
+        height: 200px;
+        margin: 50px auto;
+        padding-top: 75px;
+        background: #ccc;
+        text-align: center;
+        color: #FFF;
+        font-size: 3em;
     }
