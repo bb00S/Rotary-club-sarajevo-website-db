@@ -6,7 +6,7 @@
     @{
     ViewData["Title"] = "Naslovna";
     }
-
+    
     <script>
         const myCarousel = document.getElementById("carouselExampleIndicators");
         const carouselIndicators = myCarousel.querySelectorAll(
@@ -49,7 +49,7 @@
 </head>
 
 <body>
-    <section class="hero">
+    <section data-aos="fade-up" class="hero">
         <div class="row g-0">
             <div class="column">
                 <img src="~/img/home-hero1.jpg" class="d-block w-100">
@@ -192,7 +192,7 @@
                     <div id="logo" class="column col-xs-3">
                         <img width="340" height="144" src="~/img/rotary-logo.png" />
                     </div>
-                    <div id="logo" class="column col-xs-3">
+                    <div  id="logo" class="column col-xs-3">
                         <img width="340" height="144" src="~/img/rotaract-logo.png" />
                     </div>
                 </div>
@@ -215,6 +215,8 @@
     </div>
 
     <hr />
+
+    <div class="item" data-aos="fade-right">3</div>
 
     <div class="text-center">
         <h2><span class="h2-secondary">Projekti</span></h2>
@@ -251,7 +253,5 @@
                 <a href="" class="btn btn-primary">Više</a>
             </div>
         </div>
-
     </div>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
