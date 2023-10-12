@@ -345,6 +345,8 @@
         display: block;
         text-align: center;
         margin-top: 50px;
+        padding-right:5px;
+        padding-left:5px;
     }
 
     .cta-button {
@@ -365,7 +367,7 @@
     }
 
     .button-cta:hover {
-        background-color: #6687BA;
+        background-color: #0050a2;
     }
 
     #ulog {
@@ -384,12 +386,22 @@
         backdrop-filter: blur(30px);
         padding-right:5px;
     }
+
     .cascading-right1 {
         margin-right: -40px;
         background: hsla(0, 0%, 100%, 0.55);
         backdrop-filter: blur(30px);
         padding-right: 5px;
     }
+
+    .cascading-right2 {
+        margin-right: -20px;
+        background: hsla(0, 0%, 100%, 0.55);
+        backdrop-filter: blur(30px);
+        padding-right: 5px;
+    }
+
+
     * {
         box-sizing: border-box;
     }
@@ -403,4 +415,8 @@
         text-align: center;
         color: #FFF;
         font-size: 3em;
+    }
+
+    col1 {
+        padding-right:10px;
     }
