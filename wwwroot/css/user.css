@@ -470,6 +470,30 @@
         color: #fff;
     }
 
+    #heading-contact{
+        padding-bottom:5px;
+    }
 
+    #contact-img{
+        padding-top:55px
+    }
 
+    #contact-map {
+        padding-top: 50px;
+        padding-left:20px;
+    }
 
+    .responsive-map {
+        overflow: hidden;
+        padding-bottom: 56.25%;
+        position: relative;
+        height: 0;
+    }
+
+    .responsive-map iframe {
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+    }
