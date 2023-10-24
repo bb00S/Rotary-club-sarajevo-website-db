@@ -502,6 +502,123 @@
     label {
         text-align: right;
         clear: both;
-        float: left;
+        float: none;
         margin-right: 15px;
     }
+
+    .container21 {
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card21 {
+        width: 450px;
+        height: 250px;
+        background-color: #fff;
+        background: linear-gradient(#f8f8f8, #fff);
+        box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+        border-radius: 6px;
+        overflow: hidden;
+        position: relative;
+        margin: 1.5rem;
+    }
+
+    .card21 h1 {
+        text-align: center;
+    }
+
+    .card21 .additional {
+        position: absolute;
+        width: 150px;
+        height: 100%;
+        background: #9ea6b4;
+        transition: width 0.4s;
+        overflow: hidden;
+        z-index: 2;
+    }
+
+    .card21.green .additional {
+        background: #9ea6b4;
+    }
+
+
+    .card21:hover .additional {
+        width: 100%;
+        border-radius: 0 5px 5px 0;
+    }
+
+    .card21 .additional .user-card {
+        width: 150px;
+        height: 100%;
+        position: relative;
+        float: left;
+    }
+
+    .card21 .additional .user-card::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 10%;
+        right: -2px;
+        height: 80%;
+        border-left: 2px solid rgba(0,0,0,0.025);
+        
+    }
+
+    .card21 .additional .user-card svg {
+        padding-top:50px;
+    }
+
+    .card21 .additional .more-info {
+        width: 300px;
+        float: left;
+        position: absolute;
+        left: 150px;
+        height: 100%;
+        padding: 20px;
+        padding-top: 15px;
+    }
+
+    .card21 .additional .more-info h1 { /*h1 nakon animacije*/
+        color: #ffff;
+        margin-bottom: 0;
+    }
+
+    .card21.green .additional .more-info h1 {
+        color: #fff;
+    }
+
+    .card21 .additional .coords {
+        margin: 0 1rem;
+        color: #f7a81b;
+        font-size: 3rem;
+        align-content:center;
+    }
+
+    .card21 .general {
+        width: 300px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        box-sizing: border-box;
+        padding: 20px;
+        padding-top: 15px;
+    }
+
+    .card21 .general .more {
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        font-size: 0.9em;
+    }
+
+    @media only screen and (max-width: 380px) {
+        .container{
+            left:-40px;
+        }
+    }
+
