@@ -280,10 +280,6 @@
         border: none;
     }
 
-    .card {
-
-    }
-
     .content {
         transition: transform 1s;
         transform-style: preserve-3d;
@@ -514,8 +510,8 @@
     }
 
     .card21 {
-        width: 450px;
-        height: 250px;
+        width: 450px !important;
+        height: 400px !important;
         background-color: #fff;
         background: linear-gradient(#f8f8f8, #fff);
         box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
@@ -621,4 +617,11 @@
             left:-40px;
         }
     }
+@media screen and (max-width:480px) {
+
+    .container {
+        margin-right: 20px;
+    }
+
+}
 
