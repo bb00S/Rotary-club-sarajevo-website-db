@@ -13,7 +13,7 @@
 </section>
 
 <section class="text-center text-lg-start">
-  <div class="container py-4">
+    <div class="container py-4 d-none d-md-block">
     @if (ViewBag.Message != null)
     {
         <div class="alert alert-danger" role="alert">
@@ -55,6 +55,49 @@
       </div>
     </div>
   </div>
+
+<div class="container py-4 d-md-none">
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.Message
+        </div>
+    }
+    <div class="row g-0 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="card" id="shadow">
+                <div class="card-body p-5 shadow-5 text-center">
+                    <h2 class="fw-bold mb-5">PRIJAVA</h2>
+                    <form>
+                        <div class="form-group form-outline mb-4">
+                            <label class="fw-normal" for="email">Email adresa:</label>
+                            <input asp-for="Email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Unesite email adresu" required>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group form-outline mb-4">
+                            <label class="fw-normal" for="password">Lozinka:</label>
+                            <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Lozinka" required>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <a asp-action="ForgotPassword">Zaboravili ste lozinku?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block mb-4">
+                            Uloguj se
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-5 mb-lg-0">
+            <img src="~/img/inspire-home.jpg" class="w-100 rounded-4 shadow-4" alt="" />
+        </div>
+    </div>
+</div>
 </section>
 
  </body>
