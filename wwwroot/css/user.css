@@ -612,16 +612,19 @@
         font-size: 0.9em;
     }
 
-    @media only screen and (max-width: 380px) {
-        .container{
-            left:-40px;
+    @media screen and (max-width:480px) {
+
+        .container {
+            margin-right: 20px;
         }
-    }
-@media screen and (max-width:480px) {
 
-    .container {
-        margin-right: 20px;
     }
 
-}
-
+    .card55 {
+        padding: 20px;
+        box-shadow: 8px 8px 16px -8px rgba(0,0,0,0.6);
+        border-radius: 6px;
+        overflow: hidden;
+        position: relative;
+        margin: 1.5rem;
+    }
