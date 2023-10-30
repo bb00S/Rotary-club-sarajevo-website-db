@@ -25,7 +25,7 @@
         <div class="card cascading-right">
           <div class="card-body p-5 shadow-5 text-center">
             <h2 class="fw-bold mb-5">PRIJAVA</h2>
-            <form>
+            <form method="post" action="@Url.Action("Login", "User")">
               <div class="form-group form-outline mb-4">
                 <label class="fw-normal" for="email">Email adresa:</label>
                 <input asp-for="Email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Unesite email adresu" required>
