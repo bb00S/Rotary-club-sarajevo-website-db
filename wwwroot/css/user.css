@@ -535,11 +535,6 @@
         z-index: 2;
     }
 
-    .card21.green .additional {
-        background: #9ea6b4;
-    }
-
-
     .card21:hover .additional {
         width: 100%;
         border-radius: 0 5px 5px 0;
@@ -564,7 +559,7 @@
     }
 
     .card21 .additional .user-card svg {
-        padding-top:50px;
+        transform: translateY(40%);
     }
 
     .card21 .additional .more-info {
