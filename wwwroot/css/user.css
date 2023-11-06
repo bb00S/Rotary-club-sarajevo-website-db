@@ -636,7 +636,7 @@
     }
 
 
-#shadow {
-    background: hsla(0, 0%, 100%, 0.55);
-    backdrop-filter: blur(30px);
-}
+    #shadow {
+        background: hsla(0, 0%, 100%, 0.55);
+        backdrop-filter: blur(30px);
+    }
