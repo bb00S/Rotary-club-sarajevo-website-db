@@ -2,6 +2,153 @@
     ViewData["Title"] = "Kontrolna ploča";
     Layout = "Admin/_Layout";
 }
+
+@section Styles{
+    <link rel="stylesheet" href="~/css/admin.css" />
+}
+
 <div class="container">
-    <h1>Kontrolna ploča</h1>
+    <h1 class="text-center">Kontrolna ploča</h1>
+	<hr/>
+    <div class="row">
+	    <div class="col-lg-3 col-xs-6">
+		    <div class="rad-info-box rad-txt-success">
+			    <i class="bi bi-windows"></i>
+			    <span class="heading">Microsoft</span>
+			    <span class="value"><span>4949</span></span>
+		    </div>
+	    </div>
+	    <div class="col-lg-3 col-xs-6">
+		    <div class="rad-info-box rad-txt-primary">
+			    <i class="bi bi-facebook"></i>
+			    <span class="heading">Facebook</span>
+			    <span class="value"><span>23K</span></span>
+		    </div>
+	    </div>
+	    <div class="col-lg-3 col-xs-6">
+		    <div class="rad-info-box rad-txt-danger">
+			    <i class="bi bi-google"></i>
+			    <span class="heading">Google</span>
+			    <span class="value"><span>49M</span></span>
+		    </div>
+	    </div>
+	    <div class="col-lg-3 col-xs-6">
+		    <div class="rad-info-box">
+			    <i class="bi bi-apple"></i>
+			    <span class="heading">Apple</span>
+			    <span class="value"><span>10.9K</span></span>
+		    </div>
+	    </div>
+    </div>
 </div>
+
+<hr/>
+
+<div class="container my-4">
+    <div class="container py-4">
+        <div class="row g-0 align-items-center">
+            <div class="col-sm-4">
+                <div class="card" id="shadow">
+                    <div class="card-body p-5 shadow-5 text-center">
+						<div class="list-group group">
+							<div class="group-item">
+								<div class="action-log"><i class="bi bi-phone"></i></div>
+								<div class="row news-card p-3 bg-white">
+									<strong>Client meeting</strong>
+									<div class="md-text">Meeting at 10:00 AM</div>
+								</div>
+							</div>
+							<div class="group-item">
+								<div class="action-log"><i class="bi bi-ticket"></i></div>
+								<div class="row news-card p-3 bg-white">
+									<strong>Created ticket</strong>
+									<div class="md-text">Ticket assigned to Dev team</div>
+								</div>
+							</div>
+							<div class="group-item">
+								<div class="action-log"><i class="bi bi-check"></i></div>
+								<div class="row news-card p-3 bg-white">
+									<strong>Activity completed</strong>
+									<div class="md-text">Completed the dashboard html demo</div>
+								</div>
+							</div>
+							<div class="group-item">
+								<div class="action-log"><i class="bi bi-envelope"></i></div>
+								<div class="row news-card p-3 bg-white">
+									<strong>New Invitation</strong>
+									<div class="md-text">Max has invited you to join Inbox</div>
+								</div>
+							</div>
+							<div class="group-item">
+								<div class="action-log"><i class="bi bi-pencil"></i></div>
+								<div class="row news-card p-3 bg-white">
+									<strong>New post</strong>
+									<div class="md-text">Created new post</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-sm-8">
+
+                <div class="text-center">
+                    <h2><span class="h2-secondary">Aktuelno</span></h2>
+                </div>
+
+                <div class="container mt-5 mb-5">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-8">
+                            <div class="d-flex flex-row"></div>
+                            <div class="row news-card p-3 bg-white">
+                                <div class="col-md-4">
+                                    <div class="feed-image"><img class="news-feed-image rounded img-fluid img-responsive" src="~/img/rotary-logo.png"></div>
+                                </div>
+                                <div class="col-md-8 mt-3 mt-lg-0">
+                                    <div class="news-feed-text">
+                                        <h5>Zadatak 1</h5><span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard<br></span>
+                                        <div class="d-flex flex-row justify-content-between align-items-center mt-2">
+                                            <div class="d-flex creator-profile">
+                                                <div class="d-flex flex-column ml-2">
+                                                    <span class="date">Jan 20,2023</span>
+                                                </div>
+                                            </div><i class="fa fa-share share"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container mt-5 mb-5">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-8">
+                            <div class="d-flex flex-row"></div>
+                            <div class="row news-card p-3 bg-white">
+                                <div class="col-md-4">
+                                    <div class="feed-image"><img class="news-feed-image rounded img-fluid img-responsive" src="~/img/rotary-logo.png"></div>
+                                </div>
+                                <div class="col-md-8 mt-3 mt-lg-0">
+                                    <div class="news-feed-text">
+                                        <h5>Zadatak 2</h5><span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard<br></span>
+                                        <div class="d-flex flex-row justify-content-between align-items-center mt-2">
+                                            <div class="d-flex creator-profile">
+                                                <div class="d-flex flex-column ml-2">
+                                                    <span class="date">Apr 20,2023</span>
+                                                </div>
+                                            </div><i class="fa fa-share share"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+		</div>
+	</div>
+</div>
+	
