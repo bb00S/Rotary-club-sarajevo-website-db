@@ -15,26 +15,35 @@
         <div class="col-sm-12 mx-auto">
             <div class="card" id="shadow">
                 <div class="card-body p-5 shadow-5">
-                    <div class="table-responsive table-striped rounded">
-                        <table class="table table-sm">
-                            <thead class="table-dark g-2 shadow p-3 mb-5 mt-3 rounded">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Ime i prezime</th>
-                                    <th>Email</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                    @foreach (var member in Model)
-                                    {
-                                        <tr class="g-2 shadow p-3 mb-5 mt-3 rounded fw-bold">
-                                            <td>@member.Id</td>
-                                            <td>@member.Name</td>
-                                            <td>@member.Email</td>
-                                        </tr>
-                                    }
-                            </tbody>
-                        </table>
+                    <div class="row my-3">
+                        <h2 class="mb-2">Pocasni članovi</h2>
+                        @foreach (var member in Model.Where(m => m.Honorary))
+                        {
+                            <div class="card" style="width: 18rem;">
+                                <img src="@member.PhotoUrl" alt="" class="card-img-top img-fluid" />
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">@member.Name</h5>
+                                    <p class="card-text">@member.Email</p>
+                                    <p class="card-text">@member.Honorary</p>
+                                    <a href="mailto:@member.Email" class="btn btn-primary">Pošalji Email</a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="row my-2">
+                        <h2 class="mb-2">Članovi</h2>
+                        @foreach (var member in Model.Where(m => !m.Honorary))
+                        {
+                            <div class="card" style="width: 18rem;">
+                                <img src="@member.PhotoUrl" alt="" class="card-img-top img-fluid" />
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">@member.Name</h5>
+                                    <p class="card-text">@member.Email</p>
+                                    <p class="card-text">@member.Honorary</p>
+                                    <a href="mailto:@member.Email" class="btn btn-primary">Pošalji Email</a>
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
