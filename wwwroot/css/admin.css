@@ -23,11 +23,6 @@ table {
   border-collapse: separate;
 }
 
-.gtext {
-    color: black;
-    font-size: 120%;
-}
-
 tbody {
   display: table-row-group;
   vertical-align: middle;
