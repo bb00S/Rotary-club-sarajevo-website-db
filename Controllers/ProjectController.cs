@@ -1,0 +1,65 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using RotaryClub.Interfaces;
+using RotaryClub.ViewModels.Project;
+
+namespace RotaryClub.Controllers
+{
+    public class ProjectController : Controller
+    {
+        private readonly IProjectService _projectService;
+        public ProjectController(IProjectService projectService)
+        {
+            _projectService = projectService;
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            var createProjectVM = new CreateProjectViewModel();
+            return View(createProjectVM);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateProjectViewModel createProjectVM)
+        {
+            if (!ModelState.IsValid)
+                return View(createProjectVM);
+
+            var response = await _projectService.Create(createProjectVM);
+            if (response.Success)
+                return RedirectToAction("Index");
+
+            return BadRequest(response.ErrorMessage);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var project = await _projectService.GetById(id);
+            ViewBag.Id = id;
+            return View(project.ToEditViewModel());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, EditProjectViewModel editProjectVM)
+        {
+            if (!ModelState.IsValid)
+                return View(editProjectVM);
+            var status = await _projectService.Update(id, editProjectVM);
+            if (status.Success)
+                return RedirectToAction("Index");
+            return BadRequest(status.ErrorMessage);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var result = await _projectService.Delete(id);
+            if (result.Success)
+                return RedirectToAction("Index");
+            return BadRequest(result.ErrorMessage);
+        }
+    }
+}

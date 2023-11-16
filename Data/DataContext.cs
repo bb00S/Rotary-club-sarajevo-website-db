@@ -15,6 +15,7 @@ namespace RotaryClub.Data
 
         public DbSet<User> Users => Set<User>();
         public DbSet<Member> Members => Set<Member>();
+        public DbSet<Project> Projects => Set<Project>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
