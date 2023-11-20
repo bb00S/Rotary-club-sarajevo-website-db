@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RotaryClub.Interfaces;
 using RotaryClub.ViewModels.Project;
+using RotaryClub.Services;
 
 namespace RotaryClub.Controllers
 {
@@ -12,6 +13,12 @@ namespace RotaryClub.Controllers
         public ProjectController(IProjectService projectService)
         {
             _projectService = projectService;
+        }
+
+        public async Task<IActionResult> Projekti()
+        {
+            var project = await _projectService.GetAll();
+            return View(project);
         }
 
         [HttpGet]
