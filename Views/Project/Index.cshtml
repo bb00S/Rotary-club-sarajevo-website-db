@@ -1,54 +1,109 @@
 ﻿@model IEnumerable<Project>;
 @{
     ViewData["Title"] = "Projekti";
-    Layout = "Admin/_Layout";
-    int n = 1;
 }
-
 @section Styles{
-        <link rel="stylesheet" href="~/css/admin.css" />
+    <link rel="stylesheet" href="~/css/user.css" />
 }
 
-<section class="d-flex justify-content-center align-items-center h-80">
-    <img class="" src="~/img/login.png" />
-</section>
+<body>
 
-<div class="container py-4">
-    <div class="row g-0 align-items-center">
-        <div class="col-sm-12 mx-auto">
-            <div class="card" id="shadow">
-                <div class="card-body p-5 shadow-5">
-                    <div class="table-responsive table-striped rounded">
-                        <table class="table table-sm">
-                            <thead class="table-dark g-2 shadow p-3 mb-5 mt-3 rounded">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Naslov</th>
-                                    <th>Podnaslov</th>
-                                    <th>Sadržaj</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var project in Model)
-                                {
-                                    <tr class="g-2 shadow p-3 mb-5 mt-3 rounded fw-bold">
-                                        <td>@(n++)</td>
-                                        <td>@project.Title</td>
-                                        <td>@project.SubTitle</td>
-                                        <td>@project.Content</td>
-                                        <td>@(member.UpdatedAt.ToString("dd.MM.yyyy."))</td>
-                                        <td>
-                                            
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                        <a class="btn btn-primary" asp-action="Create">Kreiraj projekat</a>
+    <section data-aos="fade-up" class="hero3">
+        <div class="hero-inner">
+            <h1 >Projekti</h1>
+            <h2>Projekti RC Sarajevo</h2>
+        </div>
+    </section>
+
+    <hr />
+    
+    <div class="text-center">
+        <h2><span class="h2-secondary">Aktuelno</span></h2>
+    </div>
+
+    <div class="container mt-5 mb-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8">
+                <div class="d-flex flex-row"></div>
+                <div class="row news-card p-3 bg-white">
+                    <div class="col-md-4">
+                        <div class="feed-image"><img class="news-feed-image rounded img-fluid img-responsive" src="~/img/aktuelno1.jpg"></div>
+                    </div>
+                    @foreach (var project in Model)
+                    {
+                    <div class="col-md-8 mt-3 mt-lg-0">
+                        <div class="news-feed-text">
+                            <h5>@project.Title</h5><span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard<br></span>
+                            <div class="d-flex flex-row justify-content-between align-items-center mt-2">
+                                <div class="d-flex creator-profile">
+                                    <div class="d-flex flex-column ml-2">
+                                        <span class="date">Jan 20,2023</span>
+                                    </div>
+                                </div><i class="fa fa-share share"></i>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5 mb-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8">
+                <div class="d-flex flex-row"></div>
+                <div class="row news-card p-3 bg-white">
+                    <div class="col-md-4">
+                        <div class="feed-image"><img class="news-feed-image rounded img-fluid img-responsive" src="~/img/aktuelno2.jpg"></div>
+                    </div>
+                    <div class="col-md-8 mt-3 mt-lg-0">
+                        <div class="news-feed-text">
+                            <h5>Projekat 2</h5><span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard<br></span>
+                            <div class="d-flex flex-row justify-content-between align-items-center mt-2">
+                                <div class="d-flex creator-profile">
+                                    <div class="d-flex flex-column ml-2">
+                                        <span class="date">Apr 20,2023</span>
+                                    </div>
+                                </div><i class="fa fa-share share"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <div class="container mt-5 mb-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8">
+                <div class="d-flex flex-row"></div>
+                <div class="row news-card p-3 bg-white">
+                    <div class="col-md-4">
+                        <div class="feed-image"><img class="news-feed-image rounded img-fluid img-responsive" src="~/img/aktuelno3.jpg"></div>
+                    </div>
+                    <div class="col-md-8 mt-3 mt-lg-0">
+                        <div class="news-feed-text">
+                            <h5>Projekat 3</h5><span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard<br></span>
+                            <div class="d-flex flex-row justify-content-between align-items-center mt-2">
+                                    <div class="d-flex flex-column ml-2">
+                                        <span class="date">Jun 20,2023</span>
+                                    </div>
+                                </div><i class="fa fa-share share"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <hr />
+    
+    <section>
+        <div class="text-center video-container">
+            <video width="1920" height="1080" autoplay="" loop="" muted="" data-webm="" type="0"><source src="~/img/projects1-video.mp4" type="video/mp4" webkitallowfullscreen mozallowfullscreen allowfullscreen></video>
+        </div>
+    </section>
+ 
+</body>
 

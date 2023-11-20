@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using RotaryClub.Interfaces;
 using RotaryClub.ViewModels.Project;
-using RotaryClub.Services;
 
 namespace RotaryClub.Controllers
 {
@@ -15,7 +12,13 @@ namespace RotaryClub.Controllers
             _projectService = projectService;
         }
 
-        public async Task<IActionResult> Projekti()
+        public async Task<IActionResult> Index()
+        {
+            var project = await _projectService.GetAll();
+            return View(project);
+        }
+
+        public async Task<IActionResult> AdminIndex()
         {
             var project = await _projectService.GetAll();
             return View(project);
