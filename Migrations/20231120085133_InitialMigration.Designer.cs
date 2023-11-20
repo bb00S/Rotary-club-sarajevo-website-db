@@ -12,15 +12,15 @@ using RotaryClub.Data;
 namespace RotaryClub.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230615071716_AddUserSeeder")]
-    partial class AddUserSeeder
+    [Migration("20231120085133_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.7")
+                .HasAnnotation("ProductVersion", "7.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -59,6 +59,41 @@ namespace RotaryClub.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Members");
+                });
+
+            modelBuilder.Entity("RotaryClub.Models.Project", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PhotoUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SubTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("RotaryClub.Models.User", b =>
@@ -102,10 +137,10 @@ namespace RotaryClub.Migrations
                         {
                             Id = 1,
                             Email = "admin@admin.ba",
-                            PasswordHash = new byte[] { 138, 103, 108, 123, 164, 35, 169, 144, 234, 112, 21, 159, 175, 46, 207, 56, 237, 193, 163, 58, 178, 152, 203, 165, 163, 142, 181, 139, 240, 83, 204, 146, 49, 52, 104, 67, 146, 165, 117, 174, 75, 27, 242, 21, 74, 46, 89, 17, 146, 112, 28, 9, 71, 171, 119, 1, 90, 63, 183, 233, 10, 156, 213, 25 },
-                            PasswordSalt = new byte[] { 93, 134, 219, 235, 93, 93, 128, 130, 43, 180, 56, 154, 122, 154, 202, 14, 194, 221, 216, 173, 253, 67, 188, 180, 154, 53, 151, 24, 211, 83, 206, 195, 58, 79, 114, 95, 212, 223, 163, 135, 183, 179, 163, 38, 63, 56, 205, 151, 136, 108, 176, 168, 66, 225, 164, 238, 219, 88, 224, 203, 227, 177, 242, 113, 63, 103, 35, 200, 134, 115, 185, 230, 0, 73, 146, 128, 45, 135, 194, 94, 139, 134, 40, 216, 203, 106, 67, 248, 113, 18, 249, 193, 104, 60, 19, 176, 126, 130, 56, 8, 26, 155, 234, 150, 119, 94, 3, 197, 169, 29, 152, 215, 91, 227, 122, 66, 9, 136, 82, 156, 118, 240, 236, 170, 195, 185, 105, 242 },
-                            VerificationToken = "7D1F9F750B66DAA6EF3CE58AF29C173A2232003508420A45C4C95279BEB72F79A46052C3DA5719CFEF9F7FA638441DBF44690DA90F26E9F3AF9E48AC855728B0",
-                            VerifiedAt = new DateTime(2023, 6, 15, 9, 17, 16, 216, DateTimeKind.Local).AddTicks(7778)
+                            PasswordHash = new byte[] { 45, 82, 39, 105, 3, 33, 39, 233, 35, 215, 245, 90, 40, 196, 65, 102, 127, 199, 74, 163, 114, 51, 120, 216, 5, 217, 43, 118, 96, 37, 189, 27, 27, 239, 30, 134, 58, 135, 65, 8, 57, 192, 74, 11, 44, 75, 115, 120, 186, 37, 126, 218, 186, 134, 27, 232, 178, 127, 247, 39, 221, 172, 208, 114 },
+                            PasswordSalt = new byte[] { 205, 19, 227, 244, 120, 62, 83, 68, 196, 45, 23, 86, 206, 139, 143, 172, 140, 47, 55, 90, 222, 83, 146, 148, 98, 128, 113, 168, 26, 193, 98, 237, 118, 217, 191, 217, 174, 143, 51, 147, 189, 209, 104, 57, 117, 172, 80, 160, 78, 223, 129, 99, 233, 152, 180, 55, 68, 176, 153, 98, 248, 17, 86, 90, 44, 72, 64, 83, 140, 221, 34, 63, 20, 122, 59, 233, 142, 127, 164, 115, 223, 17, 239, 54, 201, 205, 38, 64, 226, 230, 174, 208, 139, 40, 219, 15, 37, 254, 21, 104, 17, 178, 145, 47, 62, 61, 57, 38, 60, 204, 213, 7, 214, 229, 223, 39, 236, 96, 162, 51, 139, 255, 63, 205, 185, 160, 118, 220 },
+                            VerificationToken = "B8B19CEA1A6EBDC9A7C6A95CA37DDEA19AC49F2049098A5DF5EFC87CE2BEA673F80ADC3C7D6E6DC3493770C1697095413DF3524BCA75DEEA3B2C8E65D70D0B78",
+                            VerifiedAt = new DateTime(2023, 11, 20, 9, 51, 33, 187, DateTimeKind.Local).AddTicks(3369)
                         });
                 });
 #pragma warning restore 612, 618
