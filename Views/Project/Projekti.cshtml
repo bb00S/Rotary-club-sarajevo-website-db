@@ -1,10 +1,10 @@
-﻿
-    @section Styles{
-        <link rel="stylesheet" href="~/css/user.css" />
-    }
-    @{
-        ViewData["Title"] = "Projekti";
-    }
+﻿@model IEnumerable<Project>;
+@{
+    ViewData["Title"] = "Projekti";
+}
+@section Styles{
+    <link rel="stylesheet" href="~/css/user.css" />
+}
 
 <body>
 
@@ -29,9 +29,11 @@
                     <div class="col-md-4">
                         <div class="feed-image"><img class="news-feed-image rounded img-fluid img-responsive" src="~/img/aktuelno1.jpg"></div>
                     </div>
+                    @foreach (var project in Model)
+                    {
                     <div class="col-md-8 mt-3 mt-lg-0">
                         <div class="news-feed-text">
-                            <h5>Projekat 1</h5><span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard<br></span>
+                            <h5>@project.Title</h5><span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard<br></span>
                             <div class="d-flex flex-row justify-content-between align-items-center mt-2">
                                 <div class="d-flex creator-profile">
                                     <div class="d-flex flex-column ml-2">
@@ -41,6 +43,7 @@
                             </div>
                         </div>
                     </div>
+                    }
                 </div>
             </div>
         </div>
