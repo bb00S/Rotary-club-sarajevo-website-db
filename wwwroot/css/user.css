@@ -623,7 +623,7 @@
     }
 
     .card75 {
-        height: 18rem;
+        height: 22rem !important;
         width: 18rem;
         padding: 20px;
         border-radius: 6px;
@@ -639,4 +639,48 @@
     #shadow {
         background: hsla(0, 0%, 100%, 0.55);
         backdrop-filter: blur(30px);
+    }
+
+    .btn21 {
+        text-decoration: none;
+        font-size: 1.4rem;
+        user-select: none;
+        color: #0050a2;
+        display: flex;
+        align-items: center;
+    }
+
+    .btn21 .arrow {
+        margin-right: 1rem;
+        height: 0.1rem;
+        width: 2.5rem;
+        position: relative;
+        background: #0050a2;
+        transition: width 0.2s ease;
+    }
+
+    .btn21 .arrow::before,
+    .btn21 .arrow::after {
+        content: "";
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: #0050a2;
+        height: 0.1rem;
+        width: 0.6rem;
+    }
+
+    .btn21 .arrow::before {
+        transform: rotate(45deg);
+        transform-origin: right bottom;
+    }
+
+    .btn21 .arrow::after {
+        transform: rotate(-45deg);
+        transform-origin: right top;
+    }
+
+    .btn21:hover .arrow {
+        width: 4rem;
     }
