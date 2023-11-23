@@ -11,5 +11,6 @@ namespace RotaryClub.Interfaces
          Task<Status> Create(CreateProjectViewModel viewModel);
          Task<Status> Update(int id, EditProjectViewModel viewModel);
          Task<Status> Delete(int id);
+        Task<IEnumerable<Project>> GetLastThreeProjects();
     }
 }

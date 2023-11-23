@@ -11,5 +11,6 @@ namespace RotaryClub.Interfaces
         Task<Status> Create(Project project);
         Task<Status> Update(Project project);
         Task<Status> Delete(Project project);
+        Task<IEnumerable<Project>> GetLastThreeProjects();
     }
 }
