@@ -63,7 +63,7 @@ namespace RotaryClub.Controllers
             return BadRequest(status.ErrorMessage);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpGet, ActionName("Delete")]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _projectService.Delete(id);

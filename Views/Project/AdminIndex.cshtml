@@ -87,7 +87,7 @@
             const modalBody = deleteModal.querySelector('.modal-body')
             const modalForm = deleteModal.querySelector('#delete')
 
-            modalForm.action = `Project/Delete/${id}`
+            modalForm.action = `Delete?id=${id}`
             modalTitle.textContent = `Are you sure?`
             modalBody.textContent = `Are you sure you want to delete ${name} from Rotary projects?`
         })
