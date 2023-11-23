@@ -37,7 +37,7 @@ namespace RotaryClub.Repositories
 
         public async Task<IEnumerable<Project>> GetAll()
         {
-            return await _context.Projects.OrderBy(x => x.Title).ToListAsync();
+            return await _context.Projects.OrderByDescending(x => x.CreatedAt).ToListAsync();
         }
 
         public async Task<Project> GetById(int id)

@@ -1,9 +1,9 @@
-﻿
-    @section Styles{
-    <link rel="stylesheet" href="~/css/user.css" />
-    }
+﻿    @model IEnumerable<Project>;
     @{
-    ViewData["Title"] = "Naslovna";
+        ViewData["Title"] = "Naslovna";
+    }
+    @section Styles{
+        <link rel="stylesheet" href="~/css/user.css" />
     }
     
     <script>
@@ -43,6 +43,18 @@
                 }
             }, 50);
         }
+    </script>
+
+    <script type="text/javascript" >
+        $(function () {
+            $.ajax({
+                url: '@Url.Action("MeterInfoPartial", "Project")',
+                type: 'GET',
+                cache: false,
+            }).done(function (result) {
+                $('#containera').html(result);
+            });
+        });
     </script>
 
 <body>
@@ -281,17 +293,19 @@
 
         <div class="row">
             <!--potrebno dodati linkove za fb postove?-->
+            @foreach (var project in Model)
+            {
             <div class="col-md-4 col-xs-4">
                 <div class="card75 rounded-4 shadow-4">
-                    <img src="..." class="card-img-top" alt="...">
+                        <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Izgradnja Centra za osobe sa intelektualnim teškoćama</h5>
+                        <h5 class="card-title">@project.Title</h5>
                         <p class="card-text"></p>
                         <a href="" class="btn btn-primary">Više</a>
                     </div>
                 </div>
             </div>
-
+            }
             <div class="col-md-4 col-xs-4">
                 <div class="card75 rounded-4 shadow-4">
                     <img src="..." class="card-img-top" alt="...">

@@ -71,5 +71,13 @@ namespace RotaryClub.Controllers
                 return RedirectToAction("Index");
             return BadRequest(result.ErrorMessage);
         }
+
+
+        [HttpGet]
+        public ActionResult MeterInfoPartial()
+        {
+            var projects = _projectService.GetLastThreeProjects();
+            return PartialView(projects);
+        }
     }
 }

@@ -26,19 +26,20 @@
             <div class="col-md-8">
                 <div class="d-flex flex-row"></div>
                 <div class="row news-card p-3 bg-white">
-                    <div class="col-md-4">
-                        <div class="feed-image"><img class="news-feed-image rounded img-fluid img-responsive" src="~/img/aktuelno1.jpg"></div>
-                    </div>
                     @foreach (var project in Model)
                     {
+                    <div class="col-md-4">
+                        <div class="feed-image"><img class="news-feed-image rounded img-fluid img-responsive" src="@project.PhotoUrl"></div>
+                    </div>
                     <div class="col-md-8 mt-3 mt-lg-0">
                         <div class="news-feed-text">
-                            <h5>@project.Title</h5><span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard<br></span>
-                            <div class="d-flex flex-row justify-content-between align-items-center mt-2">
-                                <div class="d-flex creator-profile">
-                                    <div class="d-flex flex-column ml-2">
-                                        <span class="date">Jan 20,2023</span>
-                                    </div>
+                                <h4>@project.Title</h4>
+                                <h5>@project.SubTitle</h5><span>@project.Content<br></span>
+                                <div class="d-flex flex-row justify-content-between align-items-center mt-2">
+                                    <div class="d-flex creator-profile">
+                                        <div class="d-flex flex-column ml-2">
+                                            <span class="date">@project.CreatedAt</span>
+                                        </div>
                                 </div><i class="fa fa-share share"></i>
                             </div>
                         </div>
@@ -48,54 +49,6 @@
             </div>
         </div>
     </div>
-
-    <div class="container mt-5 mb-5">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-8">
-                <div class="d-flex flex-row"></div>
-                <div class="row news-card p-3 bg-white">
-                    <div class="col-md-4">
-                        <div class="feed-image"><img class="news-feed-image rounded img-fluid img-responsive" src="~/img/aktuelno2.jpg"></div>
-                    </div>
-                    <div class="col-md-8 mt-3 mt-lg-0">
-                        <div class="news-feed-text">
-                            <h5>Projekat 2</h5><span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard<br></span>
-                            <div class="d-flex flex-row justify-content-between align-items-center mt-2">
-                                <div class="d-flex creator-profile">
-                                    <div class="d-flex flex-column ml-2">
-                                        <span class="date">Apr 20,2023</span>
-                                    </div>
-                                </div><i class="fa fa-share share"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container mt-5 mb-5">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-8">
-                <div class="d-flex flex-row"></div>
-                <div class="row news-card p-3 bg-white">
-                    <div class="col-md-4">
-                        <div class="feed-image"><img class="news-feed-image rounded img-fluid img-responsive" src="~/img/aktuelno3.jpg"></div>
-                    </div>
-                    <div class="col-md-8 mt-3 mt-lg-0">
-                        <div class="news-feed-text">
-                            <h5>Projekat 3</h5><span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard<br></span>
-                            <div class="d-flex flex-row justify-content-between align-items-center mt-2">
-                                    <div class="d-flex flex-column ml-2">
-                                        <span class="date">Jun 20,2023</span>
-                                    </div>
-                                </div><i class="fa fa-share share"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     
     <hr />
     
