@@ -6,7 +6,7 @@ using RotaryClub.ViewModels.Project;
 
 namespace RotaryClub.Services
 {
-    public class ProjectService : IProjectService 
+    public class ProjectService : IProjectService
     {
         private readonly IProjectRepository _projectRepository;
         private readonly IPhotoService _photoService;
@@ -59,6 +59,11 @@ namespace RotaryClub.Services
         public Task<Project> GetById(int id)
         {
             return _projectRepository.GetById(id);
+        }
+
+        public Task<IEnumerable<Project>> GetLastThreeProjects()
+        {
+            return _projectRepository.GetLastThreeProjects();
         }
 
         public async Task<Status> Update(int id, EditProjectViewModel viewModel)

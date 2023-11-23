@@ -74,10 +74,10 @@ namespace RotaryClub.Controllers
 
 
         [HttpGet]
-        public ActionResult MeterInfoPartial()
+        public async Task<ActionResult> LatestProjects()
         {
-            var projects = _projectService.GetLastThreeProjects();
-            return PartialView(projects);
+            var projects = await _projectService.GetLastThreeProjects();
+            return PartialView("_HomeProjectsPartial", projects);
         }
     }
 }
