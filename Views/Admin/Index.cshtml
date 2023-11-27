@@ -1,4 +1,6 @@
-﻿@{
+﻿@using RotaryClub.ViewModels.Admin;
+@model AdminViewModel
+@{
     ViewData["Title"] = "Kontrolna ploča";
     Layout = "Admin/_Layout";
 }
@@ -56,6 +58,13 @@
 								<div class="row news-card p-3 bg-white">
 									<strong>Sastanci</strong>
 									<div class="md-text">10:00 AM</div>
+								</div>
+							</div>
+							<div class="group-item">
+								<div class="action-log"><i class="bi bi-phone"></i></div>
+								<div class="row news-card p-3 bg-white">
+									<strong>Ukupan broj projekata</strong>
+									<div class="md-text">@Model.TotalProjectCount</div>
 								</div>
 							</div>
 							<div class="group-item">

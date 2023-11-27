@@ -1,7 +1,9 @@
 ﻿using Azure;
+using System.Linq;
 using RotaryClub.Data;
 using RotaryClub.Interfaces;
 using RotaryClub.Models;
+using RotaryClub.Repositories;
 using RotaryClub.ViewModels.Project;
 
 namespace RotaryClub.Services
@@ -80,5 +82,12 @@ namespace RotaryClub.Services
             project.UpdatedAt = DateTime.Now;
             return await _projectRepository.Update(project);
         }
+
+
+        public async Task<int> Count()
+        {
+            return await _projectRepository.Count();
+        }
+
     }
 }
