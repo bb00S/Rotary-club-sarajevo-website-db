@@ -1,6 +1,5 @@
 ﻿using RotaryClub.Data;
 using RotaryClub.Models;
-using RotaryClub.ViewModels.Project;
 
 namespace RotaryClub.Interfaces
 {
@@ -12,5 +11,6 @@ namespace RotaryClub.Interfaces
         Task<Status> Update(Project project);
         Task<Status> Delete(Project project);
         Task<IEnumerable<Project>> GetLastThreeProjects();
+        Task<int> Count();
     }
 }

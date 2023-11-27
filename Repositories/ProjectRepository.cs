@@ -55,5 +55,10 @@ namespace RotaryClub.Repositories
         {
             return await _context.Projects.OrderByDescending(r => r.CreatedAt).Take(3).ToListAsync();
         }
-    }
+
+		public async Task<int> Count()
+		{
+			return await _context.Projects.CountAsync();
+		}
+	}
 }
