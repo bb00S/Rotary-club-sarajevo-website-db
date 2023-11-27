@@ -21,10 +21,12 @@ namespace RotaryClub.Controllers
         public async Task<IActionResult> Index()
         {
 			int totalProjectCount = await _projectService.Count();
+			int totalMemberCount = await _memberService.Count();
 
 			var viewModel = new AdminViewModel
 			{
-				TotalProjectCount = totalProjectCount
+				TotalProjectCount = totalProjectCount,
+				TotalMemberCount = totalMemberCount
 			};
 
 			return View(viewModel);

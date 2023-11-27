@@ -50,5 +50,10 @@ namespace RotaryClub.Repositories
             _context.Members.Update(member);
             return await Save();
         }
-    }
+
+		public async Task<int> Count()
+		{
+			return await _context.Members.CountAsync();
+		}
+	}
 }
