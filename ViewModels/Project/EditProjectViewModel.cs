@@ -8,7 +8,7 @@ namespace RotaryClub.ViewModels.Project
         [Required]
         public string Title { get; set; }
         public string SubTitle { get; set; }
-        public string PhotoUrl { get; set; }
+        public string PhotoUrl { get; set; } = string.Empty;
         public IFormFile? Photo { get; set; }
         [AllowHtml]
         public string Content { get; set; }
