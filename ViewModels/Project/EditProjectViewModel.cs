@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace RotaryClub.ViewModels.Project
 {
@@ -9,7 +10,7 @@ namespace RotaryClub.ViewModels.Project
         public string SubTitle { get; set; }
         public string PhotoUrl { get; set; }
         public IFormFile? Photo { get; set; }
-        [Required]
+        [AllowHtml]
         public string Content { get; set; }
     }
 }
