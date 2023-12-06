@@ -31,7 +31,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="content" class="form-label">Sadržaj</label>
-                            <input asp-for="Content" type="text" class="form-control" id="content">
+                            <textarea asp-for="Content" id="editor" type="content" required>@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content))</textarea>
                             <span asp-validation-for="Content" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
