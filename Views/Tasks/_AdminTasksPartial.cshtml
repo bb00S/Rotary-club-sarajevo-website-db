@@ -1,0 +1,31 @@
+﻿@model List<Tasks>
+@section Styles{
+    <link rel="stylesheet" href="~/css/admin.css" />
+}
+<div class="container text-center">
+
+    <div class="row">
+     
+        @foreach (var tasks in Model)
+        {
+            <div class="container mt-5 mb-5">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-8">
+                        <div class="d-flex flex-row"></div>
+                        <div class="row news-card p-3 bg-white" id="shadow">
+                            <div class="col-md-12 mt-2 mt-lg-0">
+                                <div class="news-feed-text justify-content-between">
+                                    <h4>@tasks.Title</h4>
+                                    <span class="text-start">@tasks.Content<br></span>
+                                    <h6 class="date mt-3">@tasks.CreatedAt</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>
