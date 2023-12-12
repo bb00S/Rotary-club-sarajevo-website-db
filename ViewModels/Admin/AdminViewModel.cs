@@ -6,6 +6,7 @@ namespace RotaryClub.ViewModels.Admin
 	{
 		public int TotalProjectCount { get; set; }
 		public int TotalMemberCount { get; set; }
+
 	}
 }
 

@@ -34,6 +34,8 @@ builder.Services.AddScoped<IMemberService, MemberService>();
 builder.Services.AddScoped<IMemberRepository, MemberRepository>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+builder.Services.AddScoped<ITasksService, TasksService>();
+builder.Services.AddScoped<ITasksRepository, TasksRepository>();
 //Konfiguracije
 builder.Services.Configure<FacebookSettings>(builder.Configuration.GetSection("Facebook"));
 builder.Services.Configure<MailgunSettings>(builder.Configuration.GetSection("EmailConfiguration"));

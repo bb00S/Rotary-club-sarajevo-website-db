@@ -138,3 +138,11 @@ tr:hover {
     background: hsla(0, 0%, 100%, 0.55);
     backdrop-filter: blur(30px);
 }
+
+.h2-secondary {
+    font-family: HelveticaNeue-Light,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif !important;
+    color: #39424a !important;
+    font-weight: 300;
+    text-align: center;
+    font-size: 3.6rem;
+}
