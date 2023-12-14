@@ -11,7 +11,7 @@
                     <img src="@project.PhotoUrl" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title mt-2">@project.Title</h5>
-                        <p class="card-text">@project.Content</p>
+                        <p class="card-text">@Html.Raw(System.Web.HttpUtility.HtmlDecode(project.Content))</p>
                         <a href="" class="btn btn-primary mb-2">Više</a>
                     </div>
                 </div>
