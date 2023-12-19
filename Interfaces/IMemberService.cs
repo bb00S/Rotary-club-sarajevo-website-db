@@ -11,5 +11,6 @@ namespace RotaryClub.Interfaces
         Task<Status> Create(CreateMemberViewModel viewModel);
         Task<Status> Update(int id, EditMemberViewModel viewModel);
         Task<Status> Delete(int id);
-    }
+        Task<int> Count();
+	}
 }

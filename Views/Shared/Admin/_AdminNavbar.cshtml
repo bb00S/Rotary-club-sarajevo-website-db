@@ -1,6 +1,6 @@
 ﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
     <div class="container-fluid">
-        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RotaryClub</a>
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/rotary-logo-navbar.svg" width="150" height="50"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -12,6 +12,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="Index">Članovi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="AdminIndex">Projekti</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Tasks" asp-action="TasksIndex">Zadaci</a>
                 </li>
             </ul>
             <ul class="navbar-nav">

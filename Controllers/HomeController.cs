@@ -6,12 +6,7 @@ namespace RotaryClub.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
 
         public IActionResult Index()
         {
@@ -23,11 +18,17 @@ namespace RotaryClub.Controllers
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult Sarajevo()
         {
             return View();
         }
-        public IActionResult Sarajevo()
+
+        public IActionResult Projekti()
+        {
+            return View();
+        }
+
+        public IActionResult Contact()
         {
             return View();
         }

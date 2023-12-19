@@ -6,24 +6,44 @@
     <title>@ViewData["Title"] - RotaryClub</title>
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap-icons/bootstrap-icons.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/RotaryClub.styles.css" asp-append-version="true" />
-    @await RenderSectionAsync("ScriptsHead", required: false)
+    <link rel="stylesheet" href="~/css/user.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/RotaryClub.styles.css" asp-append-version="true" />
+	<link href="~/lib/aos/aos.css" rel="stylesheet" />
+	<script src="~/lib/aos/aos.js"></script>
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
     <header>
         <partial name = "_Navbar" />
     </header>
-    <div class="container">
+    <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <partial name="_Footer" />
+    <!--partial name="_Footer"/-->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+     <script>
+        AOS.init({        
+          // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+          offset: 120, // offset (in px) from the original trigger point
+          delay: 0, // values from 0 to 3000, with step 50ms
+          duration: 800, // values from 0 to 3000, with step 50ms
+          easing: 'ease', // default easing for AOS animations
+          once: false, // whether animation should happen only once - while scrolling down
+          mirror: false, // whether elements should animate out while scrolling past them
+          anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation        
+        });     
+        $(document).on('ready', function() {                  
+          $('.image-animate').attr('data-aos', 'fade-up');
+        });      
+        $(window).on('load', function() {          
+          AOS.refreshHard();
+        }); 
+     </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

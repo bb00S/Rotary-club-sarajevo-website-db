@@ -11,5 +11,6 @@ namespace RotaryClub.Interfaces
         Task<Status> Create(Member member);
         Task<Status> Update(Member member);
         Task<Status> Delete(Member member);
-    }
+		Task<int> Count();
+	}
 }
