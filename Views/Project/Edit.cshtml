@@ -1,0 +1,65 @@
+﻿@using RotaryClub.ViewModels.Project
+@model EditProjectViewModel
+@{
+    ViewData["Title"] = "Uredi projekat";
+    Layout = "Admin/_Layout";
+}
+@section Styles{
+    <link rel="stylesheet" href="~/css/admin.css" />
+}
+
+<section class="d-flex justify-content-center align-items-center h-70">
+    <img class="" src="~/img/login.png" />
+</section>
+
+<div class="container my-4">
+    <div class="container py-4">
+        <div class="row g-0 align-items-center">
+            <div class="col-sm-6 mx-auto">
+                <div class="card" id="shadow">
+                    <div class="card-body p-5 shadow-5 text-center">
+                        <h1 class="fw-bold mb-3">Uredi projekat</h1>
+                        <form method="post" asp-action="Edit" enctype="multipart/form-data" class="needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Naslov</label>
+                                <input asp-for="Title" type="text" class="form-control" id="title" required>
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label for="subtitle" class="form-label">Podnaslov</label>
+                                <input asp-for="SubTitle" type="subtitle" class="form-control" id="subtitle">
+                                <span asp-validation-for="SubTitle" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label for="content" class="form-label">Sadržaj</label>
+                                <textarea asp-for="Content" id="editor" type="content" required>@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content))</textarea>
+                                <span asp-validation-for="Content" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Fotografija</label>
+                                <input asp-for="Photo" class="form-control" type="file" id="formFile">
+                                <span asp-validation-for="Photo" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <div class="row">
+                                    <div class="col-sm-6 mb-2">
+                                        <button class="btn btn-primary" type="submit">Uredi projekat</button>
+                                    </div>
+                                    <div class="col-sm-6 mb-2">
+                                        <img height="75" width="75" src="@Model.PhotoUrl" alt="@Model.Title" class="img-fluid" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script type="text/javascript" src="~/js/formValidation.js" defer></script>
+}

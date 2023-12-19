@@ -1,0 +1,148 @@
+﻿body {
+}
+
+#shadow {
+    background: hsla(0, 0%, 100%, 0.55);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    backdrop-filter: blur(30px);
+}
+
+#shadow1 {
+    -moz-box-shadow: 10px 10px 5px #888;
+    -webkit-box-shadow: 10px 10px 5px #888;
+    box-shadow: 10px 10px 5px #888;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table {
+  border-spacing: 0 10px;
+  border-collapse: separate;
+}
+
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+}
+tr {
+  margin-bottom: 9px;
+}
+tr:hover {
+      box-shadow: 0 5px 8px 0 rgba(50, 50, 50, 0.35);
+    -webkit-box-shadow: 0 5px 8px 0 rgba(50, 50, 50, 0.35);
+    -moz-box-shadow: 0 5px 8px 0 rgba(50, 50, 50, 0.35);
+}
+
+.form-label {
+    text-align: left !important;
+    float: left;
+}
+
+.rad-info-box {
+    box-shadow: none !important;
+    border-radius: 4px;
+}
+
+.panel {
+    box-shadow: none !important;
+    border-radius: 4px !important;
+    border: none !important;
+}
+
+.panel-heading{
+    background: #fafafa !important;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.panel-body {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+
+.panel-default {
+    border-color: none;
+}
+
+.rad-panel-action {
+    list-style: none;
+    display: inline-block;
+    float: right;
+}
+
+.rad-panel-action li {
+    display: inline-block;
+    color: black;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.rad-info-box {
+    margin-bottom: 16px;
+    box-shadow: 1px 1px 2px 0 #CCCCCC;
+    padding: 20px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+    background: white !important;
+}
+
+.rad-info-box i {
+    display: block;
+    background-clip: padding-box;
+    margin-right: 15px;
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    line-height: 60px;
+    text-align: center;
+    font-size: 4.4em;
+    position: absolute;
+}
+
+.rad-info-box .value,
+.rad-info-box .heading {
+    display: block;
+    position: relative;
+    color:black;
+    text-align: right;
+    z-index: 10;
+}
+
+.rad-info-box .heading {
+    font-size: 1.2em;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.rad-info-box .value {
+    font-size: 2.1em;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.action-log i {
+    background-clip: padding-box;
+    margin-right: 15px;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    line-height: 40px;
+    text-align: center;
+    font-size: 3.4em;
+}
+
+#shadow {
+    background: hsla(0, 0%, 100%, 0.55);
+    backdrop-filter: blur(30px);
+}
+
+.h2-secondary {
+    font-family: HelveticaNeue-Light,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif !important;
+    color: #39424a !important;
+    font-weight: 300;
+    text-align: center;
+    font-size: 3.6rem;
+}

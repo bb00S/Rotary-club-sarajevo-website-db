@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="~/RotaryClub.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/bootstrap-icons/bootstrap-icons.css" />
     @await RenderSectionAsync("ScriptsHead", required: false)
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
     <header>
@@ -24,5 +25,29 @@
     <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+
+        tinymce.init({
+            selector: 'textarea#editor',
+            plugins: 'powerpaste casechange searchreplace autolink directionality advcode visualblocks visualchars image link media mediaembed codesample table charmap pagebreak nonbreaking anchor tableofcontents insertdatetime advlist lists checklist wordcount tinymcespellchecker editimage help formatpainter permanentpen charmap linkchecker emoticons advtable export autosave',
+            toolbar: 'undo redo print spellcheckdialog formatpainter | blocks fontfamily fontsize | bold italic underline forecolor backcolor | link image | alignleft aligncenter alignright alignjustify lineheight | checklist bullist numlist indent outdent | removeformat',
+            setup: (editor) => {
+                editor.on('init', () => {
+                    const editorContainer = editor.getContainer();
+                    editorContainer.style.display = 'flex'; 
+                    editorContainer.style.clear = 'both'; 
+                    editorContainer.style.margin = '0 auto'; 
+                    editorContainer.style.marginBottom = '10px'; 
+                });
+            },
+        });
+
+
+
+
+    </script>
 </body>
 </html>

@@ -20,6 +20,13 @@ namespace RotaryClub.Controllers
             return View(members);
         }
 
+        [AllowAnonymous]
+        public async Task<IActionResult> IndexHomeAsync()
+        {
+            var members = await _memberService.GetAll();
+            return View(members);
+        }
+
         [HttpGet]
         public IActionResult Create()
         {

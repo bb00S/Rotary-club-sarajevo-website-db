@@ -17,7 +17,7 @@ namespace RotaryClub.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.7")
+                .HasAnnotation("ProductVersion", "7.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -56,6 +56,41 @@ namespace RotaryClub.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Members");
+                });
+
+            modelBuilder.Entity("RotaryClub.Models.Project", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PhotoUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SubTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("RotaryClub.Models.User", b =>
@@ -99,10 +134,10 @@ namespace RotaryClub.Migrations
                         {
                             Id = 1,
                             Email = "admin@admin.ba",
-                            PasswordHash = new byte[] { 138, 103, 108, 123, 164, 35, 169, 144, 234, 112, 21, 159, 175, 46, 207, 56, 237, 193, 163, 58, 178, 152, 203, 165, 163, 142, 181, 139, 240, 83, 204, 146, 49, 52, 104, 67, 146, 165, 117, 174, 75, 27, 242, 21, 74, 46, 89, 17, 146, 112, 28, 9, 71, 171, 119, 1, 90, 63, 183, 233, 10, 156, 213, 25 },
-                            PasswordSalt = new byte[] { 93, 134, 219, 235, 93, 93, 128, 130, 43, 180, 56, 154, 122, 154, 202, 14, 194, 221, 216, 173, 253, 67, 188, 180, 154, 53, 151, 24, 211, 83, 206, 195, 58, 79, 114, 95, 212, 223, 163, 135, 183, 179, 163, 38, 63, 56, 205, 151, 136, 108, 176, 168, 66, 225, 164, 238, 219, 88, 224, 203, 227, 177, 242, 113, 63, 103, 35, 200, 134, 115, 185, 230, 0, 73, 146, 128, 45, 135, 194, 94, 139, 134, 40, 216, 203, 106, 67, 248, 113, 18, 249, 193, 104, 60, 19, 176, 126, 130, 56, 8, 26, 155, 234, 150, 119, 94, 3, 197, 169, 29, 152, 215, 91, 227, 122, 66, 9, 136, 82, 156, 118, 240, 236, 170, 195, 185, 105, 242 },
-                            VerificationToken = "7D1F9F750B66DAA6EF3CE58AF29C173A2232003508420A45C4C95279BEB72F79A46052C3DA5719CFEF9F7FA638441DBF44690DA90F26E9F3AF9E48AC855728B0",
-                            VerifiedAt = new DateTime(2023, 6, 15, 9, 17, 16, 216, DateTimeKind.Local).AddTicks(7778)
+                            PasswordHash = new byte[] { 142, 235, 160, 37, 189, 132, 39, 31, 237, 167, 47, 61, 241, 126, 159, 144, 178, 228, 28, 11, 40, 26, 36, 28, 88, 0, 123, 215, 147, 15, 205, 167, 141, 164, 166, 26, 62, 74, 123, 50, 25, 234, 250, 225, 62, 181, 57, 211, 244, 6, 24, 157, 66, 235, 153, 12, 242, 125, 101, 107, 101, 203, 250, 70 },
+                            PasswordSalt = new byte[] { 222, 245, 55, 190, 46, 43, 210, 170, 54, 50, 249, 94, 118, 46, 98, 179, 57, 211, 82, 94, 93, 225, 11, 163, 106, 170, 61, 90, 30, 207, 145, 46, 225, 2, 33, 206, 100, 248, 38, 28, 134, 215, 243, 171, 185, 155, 201, 227, 123, 147, 58, 171, 80, 81, 253, 254, 21, 220, 240, 21, 30, 211, 160, 179, 223, 75, 136, 148, 106, 163, 185, 24, 115, 45, 250, 159, 188, 237, 45, 154, 184, 255, 176, 163, 31, 136, 226, 55, 45, 210, 200, 1, 66, 237, 166, 193, 152, 202, 16, 234, 12, 68, 199, 197, 115, 62, 10, 175, 51, 95, 100, 42, 109, 65, 63, 98, 136, 251, 216, 70, 90, 162, 221, 90, 130, 245, 156, 70 },
+                            VerificationToken = "A447F6CC515CF4EDC0BFCE70AB1C3F920D5664263EB51CC88E12A24CB5E17EEC5F5EA4F48DE0E5EC2FB48A88A6DE439AD537B0FBA85A0F73E9F4F4D5DAF62714",
+                            VerifiedAt = new DateTime(2023, 12, 4, 11, 36, 56, 971, DateTimeKind.Local).AddTicks(1039)
                         });
                 });
 #pragma warning restore 612, 618

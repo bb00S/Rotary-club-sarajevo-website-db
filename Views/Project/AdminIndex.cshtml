@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Project>;
+@{
+    ViewData["Title"] = "Projekti";
+    Layout = "Admin/_Layout";
+    int n = 1;
+}
+
+@section Styles{
+        <link rel="stylesheet" href="~/css/admin.css" />
+}
+
+<section class="d-flex justify-content-center align-items-center h-80">
+    <img class="" src="~/img/login.png" />
+</section>
+
+<div class="container py-4">
+    <div class="row g-0 align-items-center">
+        <div class="col-sm-12 mx-auto">
+            <div class="card" id="shadow">
+                <div class="card-body p-5 shadow-5">
+                    <div class="table-responsive table-striped rounded">
+                        <table class="table table-sm">
+                            <thead class="table-dark g-2 shadow p-3 mb-5 mt-3 rounded">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Naslov</th>
+                                    <th>Podnaslov</th>
+                                    <th>Sadržaj</th>
+                                    <th>Datum ažuriranja</th>
+                                    <th>Opcije</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var project in Model)
+                                {
+                                    <tr class="g-2 shadow p-3 mb-5 mt-3 rounded fw-bold">
+                                        <td>@(n++)</td>
+                                        <td>@project.Title</td>
+                                        <td>@project.SubTitle</td>
+                                        <td>@project.Content</td>
+                                        <td>@(project.UpdatedAt.ToString("dd.MM.yyyy."))</td>
+                                        <td>
+                                            <a class="btn btn-success mt-3 mb-3" asp-route-id="@project.Id" asp-action="Edit">Uredi</a>
+                                            <button type="button" class="btn btn-danger mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="@project.Id" data-bs-name="@project.Title">Izbriši</button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <a class="btn btn-primary" asp-action="Create">Kreiraj projekat</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+                <form asp-controller="Project" asp-action="Delete" id="delete" method="post">
+                    <button type="submit" class="btn btn-danger">Izbriši</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const deleteModal = document.getElementById('deleteModal')
+    if (deleteModal) {
+        deleteModal.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget
+            const name = button.getAttribute('data-bs-name')
+            const id = button.getAttribute('data-bs-id')
+
+            // Update the modal's content.
+            const modalTitle = deleteModal.querySelector('.modal-title')
+            const modalBody = deleteModal.querySelector('.modal-body')
+            const modalForm = deleteModal.querySelector('#delete')
+
+            modalForm.action = `Delete?id=${id}`
+            modalTitle.textContent = `Are you sure?`
+            modalBody.textContent = `Are you sure you want to delete ${name} from Rotary projects?`
+        })
+    }
+</script>

@@ -1,38 +1,108 @@
-﻿@using RotaryClub.ViewModels.User;
-@model UserRegisterViewModel;
-@{
-    ViewData["Title"] = "Registruj se";
-}
-
-<div class="container">
-    @if(ViewBag.Message != null)
-    {
-        <div class="alert alert-danger" role="alert">
-           @ViewBag.Message
-        </div>
+﻿    @section Styles{
+    <link rel="stylesheet" href="~/css/user.css" />
     }
-    <form method="post" asp-action="Register" enctype="multipart/form-data">
-        <div class="form-group mb-2">
-            <label for="email">Email adresa</label>
-            <input asp-for="Email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Unesite email adresu" required>
-                <span asp-validation-for="Email" class="text-danger"></span>
+    @using RotaryClub.ViewModels.User;
+    @model UserRegisterViewModel;
+    @{
+        ViewData["Title"] = "Registruj se";
+    }
+
+    <body>
+        <section class="d-flex justify-content-center align-items-center h-80">
+            <img class="" src="~/img/login.png" />
+        </section>
+    <section class="text-center text-lg-start">
+        <div class="container py-4 d-none d-md-block ">
+                @if (ViewBag.Message != null)
+                {
+                <div class="alert alert-danger" role="alert">
+                        @ViewBag.Message
+                </div>
+                }
+        <div class="row g-0 align-items-center">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="card cascading-right1">
+              <div class="card-body p-5 shadow-5 text-center">
+                <h2 class="fw-bold mb-5">REGISTRACIJA</h2>
+                <form method="POST" action="@Url.Action("Register", "User")">
+                  <div class="form-outline mb-4">
+                    <label class="fw-normal" for="email">Email adresa:</label>
+                    <input asp-for="Email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Unesite email adresu" required>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <label class="fw-normal" for="password">Lozinka:</label>
+                    <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Lozinka" required>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                  </div>
+                <div class="form-outline mb-4">
+                    <label class="fw-normal" for="confirmPassword">Potvrdite lozinku:</label>
+                    <input asp-for="ConfirmPassword" type="password" class="form-control" id="confirmPassword" placeholder="Ponovno unesite lozinku" required>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-outline mb-4">
+                    <label class="fw-normal" for="Keyword">Ključ:</label>
+                    <input asp-for="Keyword" type="password" class="form-control" id="Keyword" placeholder="Ključ" required>
+                    <span asp-validation-for="Keyword" class="text-danger"></span>
+                </div>
+
+                <button id="register" type="submit" class="btn btn-primary">Registruj se</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mb-5 mb-lg-0">
+                <img src="~/img/mentor1.jpg" class="w-100 rounded-4 shadow-4" alt="" />
+          </div>
         </div>
-        <div class="form-group mb-2">
-            <label for="password">Lozinka</label>
-            <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Lozinka" required>
-            <span asp-validation-for="Password" class="text-danger"></span>
+      </div>
+
+        <div class="container py-4 d-md-none">
+            @if (ViewBag.Message != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ViewBag.Message
+                </div>
+            }
+            <div class="row g-0 align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="card" id="shadow">
+                        <div class="card-body p-5 shadow-5 text-center">
+                            <h2 class="fw-bold mb-5">REGISTRACIJA</h2>
+                            <form method="POST" action="@Url.Action("Register", "User")">
+                                <div class="form-outline mb-4">
+                                    <label class="fw-normal" for="email">Email adresa:</label>
+                                    <input asp-for="Email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Unesite email adresu" required>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label class="fw-normal" for="password">Lozinka:</label>
+                                    <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Lozinka" required>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label class="fw-normal" for="confirmPassword">Potvrdite lozinku:</label>
+                                    <input asp-for="ConfirmPassword" type="password" class="form-control" id="confirmPassword" placeholder="Ponovno unesite lozinku" required>
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label class="fw-normal" for="Keyword">Ključ:</label>
+                                    <input asp-for="Keyword" type="password" class="form-control" id="Keyword" placeholder="Ključ" required>
+                                    <span asp-validation-for="Keyword" class="text-danger"></span>
+                                </div>
+
+                                <button id="register" type="submit" class="btn btn-primary">Registruj se</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <img src="~/img/mentor1.jpg" class="w-100 rounded-4 shadow-4" alt="" />
+                </div>
+            </div>
         </div>
-        <div class="form-group mb-2">
-            <label for="confirmPassword">Potvrda lozinke</label>
-            <input asp-for="ConfirmPassword" type="password" class="form-control" id="confirmPassword" placeholder="Ponovno unesite lozinku" required>
-            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-        </div>
-        <div class="form-group mb-2">
-            <label for="Keyword">Ključ</label>
-            <input asp-for="Keyword" type="password" class="form-control" id="Keyword" placeholder="Ključ" required>
-            <span asp-validation-for="Keyword" class="text-danger"></span>
-        </div>
-        
-        <button type="submit" class="btn btn-primary">Registruj se</button>
-    </form>
-</div>
+    </section>
+
+</body>

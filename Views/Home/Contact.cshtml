@@ -1,12 +1,16 @@
-﻿@model Email;
+﻿@section Styles{
+<link rel="stylesheet" href="~/css/user.css" />
+}
+@model Email;
 @{
     ViewData["Title"] = "Kontaktirajte nas";
 }
+
+<section class="d-flex justify-content-center align-items-center h-80">
+    <img class="" src="~/img/login.png" />
+</section>
 <section id="contact" class="contact">
     <div class="container my-5">
-        <div class="d-flex justify-content-center">
-            <p class="badge rounded-pill text-bg-primary p-2">Kontakt</p>
-        </div>
         <div class="d-flex justify-content-center">
             <h2 class="h2 heading-2">Kontaktirajte <strong class="">Nas</strong></h2>
         </div>
@@ -17,7 +21,7 @@
                 <div class="card h-100">
                     <div class="card-body d-flex flex-column justify-content-center " id="info">
                         <div class="row">
-                            <div class="info-box mb-4">
+                            <div class="col-mb-3">
                                 <i class="bi bi-geo-alt"></i>
                                 <h3>Naša adresa</h3>
                                 <p id="address">
@@ -30,7 +34,7 @@
                         </div>
 
                         <div class="row">
-                                <div class="info-box mb-4">
+                                <div class="col-mb-3">
                                     <i class="bi bi-envelope-at"></i>
                                     <h3>Pošaljite nam email</h3>
                                     <p id="email">rotaryclub.sarajevo@gmail.com</p>
@@ -38,7 +42,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="info-box mb-4">
+                            <div class="col-mb-3">
                                 <i class="bi bi-telephone-outbound"></i>
                                 <h3>Nazovite nas</h3>
                                 <p id="phone">+387 (0)33 000 000</p>
@@ -90,12 +94,39 @@
                             Unesite Vaš upit
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Pošalji</button>
-                </form>
+                    <div class="form-floating mb-3">
+                        <button type="submit" class="btn btn-primary">Pošalji</button>
+                    </div>
+                </form>            
             </div>
         </div>
     </div>
 </section>
+
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6" id="contact-img">
+                <img src="~/img/mentor1.jpg" class="w-100 rounded-4 shadow-4" alt="" />
+            </div>
+            <div class="col-12 col-lg-6" id="contact-map">
+                <div class="row">
+                    <div class="column text-center" id="heading-contact">
+                        <h2 class="h2 heading-2">Pronađite <strong class="">Nas</strong></h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column text-center">
+                        <div class="responsive-map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2876.863865359386!2d18.42471907545241!3d43.858650239119825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4758c8c8b767890f%3A0xaa0ba55d22d9b53!2sVladislava%20Skari%C4%87a%205%2C%20Sarajevo%2071000!5e0!3m2!1sbs!2sba!4v1693610808235!5m2!1sbs!2sba" class="rounded-4" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 @section Scripts
 {

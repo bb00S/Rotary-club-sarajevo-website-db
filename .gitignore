@@ -34,3 +34,4 @@ msbuild.wrn
 .vs/
 
 /wwwroot/images/members
+/wwwroot/images/projects

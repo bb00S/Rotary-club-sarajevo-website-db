@@ -2,6 +2,7 @@
 using RotaryClub.Data;
 using RotaryClub.Interfaces;
 using RotaryClub.Models;
+using RotaryClub.Repositories;
 using RotaryClub.ViewModels.Member;
 
 namespace RotaryClub.Services
@@ -75,5 +76,10 @@ namespace RotaryClub.Services
             member.Name = viewModel.Name;
             return await _memberRepository.Update(member);
         }
-    }
+
+		public async Task<int> Count()
+        {
+			return await _memberRepository.Count();
+		}
+	}
 }
