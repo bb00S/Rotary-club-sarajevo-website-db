@@ -24,7 +24,7 @@
                                 <div class="card-body text-center">
                                     <h5 class="card-title">@member.Name</h5>
                                     <p class="card-text">@member.Email</p>
-                                    <p class="card-text">@member.Honorary</p>
+                                    <p class="card-text fw-bold">Počasni član: @(member.Honorary ? "Da" : "Ne")</p>
                                     <a href="mailto:@member.Email" class="btn btn-primary">Pošalji Email</a>
                                 </div>
                             </div>
