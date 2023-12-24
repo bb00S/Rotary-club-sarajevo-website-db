@@ -19,7 +19,7 @@
                         <h2 class="mb-3">Počasni članovi</h2>
                         @foreach (var member in Model.Where(m => m.Honorary))
                         {
-                            <div class="card" id="shadow" style="width: 18rem;">
+                            <div class="card p-0" id="shadow" style="width: 18rem;">
                                 <img src="@member.PhotoUrl" alt="" class="card-img-top img-fluid" />
                                 <div class="card-body text-center">
                                     <h5 class="card-title">@member.Name</h5>
