@@ -146,3 +146,7 @@ tr:hover {
     text-align: center;
     font-size: 3.6rem;
 }
+
+html * {
+    font-family: HelveticaNeue-Light,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif !important;
+}
