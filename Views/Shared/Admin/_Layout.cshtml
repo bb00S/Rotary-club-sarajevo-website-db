@@ -31,9 +31,10 @@
     <script>
 
         tinymce.init({
-            selector: 'textarea#editor',
-            plugins: 'powerpaste casechange searchreplace autolink directionality advcode visualblocks visualchars image link media mediaembed codesample table charmap pagebreak nonbreaking anchor tableofcontents insertdatetime advlist lists checklist wordcount tinymcespellchecker editimage help formatpainter permanentpen charmap linkchecker emoticons advtable export autosave',
-            toolbar: 'undo redo print spellcheckdialog formatpainter | blocks fontfamily fontsize | bold italic underline forecolor backcolor | link image | alignleft aligncenter alignright alignjustify lineheight | checklist bullist numlist indent outdent | removeformat',
+        selector: 'textarea#editor',
+        plugins: 'powerpaste casechange searchreplace autolink directionality advcode visualblocks visualchars image link media mediaembed codesample table charmap pagebreak nonbreaking anchor tableofcontents insertdatetime advlist lists checklist wordcount tinymcespellchecker editimage help formatpainter permanentpen charmap linkchecker emoticons advtable export autosave',
+        toolbar: 'undo redo print spellcheckdialog formatpainter | bold italic underline strikethrough forecolor backcolor | emoticons | bullist numlist outdent indent | removeformat | alignleft aligncenter alignright alignjustify | lineheight | checklist | fontselect fontsizeselect',
+
             setup: (editor) => {
                 editor.on('init', () => {
                     const editorContainer = editor.getContainer();
@@ -44,9 +45,6 @@
                 });
             },
         });
-
-
-
 
     </script>
 </body>
