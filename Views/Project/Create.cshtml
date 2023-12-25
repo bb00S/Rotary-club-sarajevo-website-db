@@ -16,7 +16,10 @@
     <div class="row g-0 align-items-center">
         <div class="col-sm-12 mx-auto">
             <div class="card" id="shadow">
-                <div class="card-body p-5 shadow-5 text-center">
+                <div class="container d-flex justify-content-end mt-3">
+                    <button class="btn btn-primary" type="submit">Kreiraj projekat</button>
+                </div>
+                <div class="card-body p-4 shadow-5 text-center">
                     <h1 class="fw-bold mb-3">Kreiraj novi projekat</h1>
                     <form method="post" asp-action="Create" enctype="multipart/form-data" class="needs-validation" novalidate>
                         <div class="mb-3">
@@ -39,7 +42,7 @@
                             <input asp-for="Photo" class="form-control" type="file" id="formFile" required>
                             <span asp-validation-for="Photo" class="text-danger"></span>
                         </div>
-                        <button class="btn btn-primary" type="submit">Kreiraj projekat</button>
+
                     </form>
                 </div>
             </div>

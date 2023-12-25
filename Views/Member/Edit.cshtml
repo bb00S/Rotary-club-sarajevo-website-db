@@ -18,7 +18,10 @@
         <div class="row g-0 align-items-center">
             <div class="col-sm-6 mx-auto">
                 <div class="card" id="shadow">
-                    <div class="card-body p-5 shadow-5 text-center">
+                    <div class="container d-flex justify-content-end mt-3">
+                        <button class="btn btn-primary" type="submit">Uredi člana</button>
+                    </div>
+                    <div class="card-body p-4 shadow-5 text-center">
                         <h1 class="fw-bold mb-3">Uredi korisnika</h1>
                         <form method="post" asp-action="Edit" asp-route-id="@ViewBag.Id" enctype="multipart/form-data" class="needs-validation" novalidate>
                             <div class="mb-3">
@@ -48,10 +51,7 @@
                             </div>
                             <div class="mb-3">
                                 <div class="row">
-                                    <div class="col-sm-6 mb-2">
-                                        <button class="btn btn-primary" type="submit">Uredi člana</button>
-                                    </div>
-                                    <div class="col-sm-6 mb-2">
+                                    <div class="col-sm-12 mb-2 d-flex justify-content-end">
                                         <img height="75" width="75" src="@Model.PhotoUrl" alt="@Model.Name" class="img-fluid" />
                                     </div>
                                 </div>
