@@ -16,7 +16,10 @@
     <div class="row g-0 align-items-center">
         <div class="col-sm-6 mx-auto">
             <div class="card" id="shadow">
-                <div class="card-body p-5 shadow-5 text-center">
+                <div class="container d-flex justify-content-end mt-3">
+                    <button class="btn btn-primary" type="submit">Kreiraj zadatak</button>
+                </div>
+                <div class="card-body p-4 shadow-5 text-center">
                     <h1 class="fw-bold mb-3">Kreiraj novi zadatak</h1>
                     <form method="post" asp-action="Create" enctype="multipart/form-data" class="needs-validation" novalidate>
                         <div class="mb-3">
@@ -29,7 +32,6 @@
                             <input asp-for="Content" type="text" class="form-control" id="content" required>
                             <span asp-validation-for="Content" class="text-danger"></span>
                         </div>
-                        <button class="btn btn-primary" type="submit">Kreiraj zadatak</button>
                     </form>
                 </div>
             </div>
