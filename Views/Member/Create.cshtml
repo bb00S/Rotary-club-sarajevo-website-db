@@ -17,11 +17,11 @@
         <div class="col-sm-6 mx-auto">
             <div class="card" id="shadow">
                 <div class="container d-flex justify-content-end mt-3">
-                    <button class="btn btn-primary" type="submit">Kreiraj člana</button>
+                    <button class="btn btn-primary" type="button" onclick="submitForm()">Kreiraj člana</button>
                 </div>
                 <div class="card-body p-4 shadow-5 text-center">
                     <h1 class="fw-bold mb-3">Kreiraj novog korisnika</h1>
-                    <form method="post" asp-action="Create" enctype="multipart/form-data" class="needs-validation" novalidate>
+                    <form method="post" asp-action="Create" enctype="multipart/form-data" class="needs-validation" novalidate id="myForm">
                         <div class="mb-3">
                             <label for="name" class="form-label">Ime i prezime</label>
                             <input asp-for="Name" type="text" class="form-control" id="name" placeholder="John Doe" required>
@@ -56,4 +56,9 @@
 
 @section Scripts {
     <script type="text/javascript" src="~/js/formValidation.js" defer></script>
+    <script>
+        function submitForm() {
+            document.getElementById("myForm").submit();
+        }
+    </script>
 }

@@ -21,43 +21,54 @@
     <div class="text-center">
         <h2><span class="h2-secondary">Aktuelno</span></h2>
     </div>
-
-    <div class="container mt-5 mb-5">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-8">
-                <div class="d-flex flex-row"></div>
-                <div class="row news-card p-3 bg-white">
-                    @foreach (var project in Model)
-                    {
-                    <div class="col-md-4 mb-5">
-                        <div class="feed-image"><img class="news-feed-image rounded img-fluid img-responsive" src="@project.PhotoUrl"></div>
-                    </div>
-                    <div class="col-md-8 mt-3 mt-lg-0">
-                        <div class="news-feed-text">
-                                <h4>@project.Title</h4>
-                                    <h5>@project.SubTitle</h5><span>@Html.Raw(System.Web.HttpUtility.HtmlDecode(project.Content))<br></span>
-                                <div class="d-flex flex-row justify-content-between align-items-center mt-2">
-                                    <div class="d-flex creator-profile">
-                                        <div class="d-flex flex-column ml-2">
-                                            <span class="date">@project.CreatedAt</span>
-                                        </div>
-                                </div><i class="fa fa-share share"></i>
-                            </div>
+    <div class="container p-5">
+        <div class="row" id="cardRow">
+            @foreach (var project in Model)
+            {
+            <div class="col-md-3 col-sm-6 col-xs-12 justify-content-center d-flex">
+                <div class="card55 p-0 m-md-3 mt-3 shadow-md-5" id="shadow" style="width: 18rem;">
+                <img src="@project.PhotoUrl" alt="" class="card-img-top img-fluid" />
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@project.Title</h5>
+                        <h6 class="card-title">@project.SubTitle</h6>
+                        <p class="card-text">@Html.Raw(System.Web.HttpUtility.HtmlDecode(project.Content.Substring(0, 10)))</p>
+                        <a href="@Url.Action("Index", "Home")" class="btn btn-primary mb-2">Više</a>
+                        <div class="d-flex flex-column ml-2">
+                            <span class="date">@project.CreatedAt</span>
                         </div>
                     </div>
-                    }
                 </div>
             </div>
+            }
         </div>
     </div>
 </section> 
-    <hr />
-    
-    <section>
-        <div class="text-center video-container">
-            <video width="1920" height="1080" autoplay="" loop="" muted="" data-webm="" type="0"><source src="~/img/projects1-video.mp4" type="video/mp4" webkitallowfullscreen mozallowfullscreen allowfullscreen></video>
-        </div>
-    </section>
- 
+
+<section>
+    <div class="text-center video-container">
+        <video width="1920" height="1080" autoplay="" loop="" muted="" data-webm="" type="0">
+            <source src="/img/projects1-video.mp4" type="video/mp4" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+        </video>
+    </div>
+</section>
 </body>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var cardContainer = document.getElementById("cardContainer");
+        var cards = cardContainer.getElementsByClassName("col-md-3");
+
+        var cardsPerRow = 4;
+        for (var i = 0; i < cards.length; i += cardsPerRow) {
+            var row = document.createElement("div");
+            row.className = "row";
+
+            for (var j = 0; j < cardsPerRow && i + j < cards.length; j++) {
+                var card = cards[i + j].cloneNode(true);
+                row.appendChild(card);
+            }
+
+            cardContainer.appendChild(row);
+        }
+    });
+</script>
