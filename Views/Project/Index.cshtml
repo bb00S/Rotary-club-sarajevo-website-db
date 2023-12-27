@@ -29,11 +29,11 @@
                 <div class="card55 p-0 m-md-3 mt-3 shadow-md-5" id="shadow" style="width: 18rem;">
                 <img src="@project.PhotoUrl" alt="" class="card-img-top img-fluid" />
                     <div class="card-body text-center">
-                        <h5 class="card-title">@project.Title</h5>
-                        <h6 class="card-title">@project.SubTitle</h6>
-                        <p class="card-text">@Html.Raw(System.Web.HttpUtility.HtmlDecode(project.Content.Substring(0, 10)))</p>
+                        <h5 class="card-title m-2">@project.Title</h5>
+                        <h6 class="card-title m-2">@project.SubTitle</h6>
+                        <p class="card-text m-2">@Html.Raw(System.Web.HttpUtility.HtmlDecode(project.Content.Substring(0, 10)))</p>
                         <a href="@Url.Action("Index", "Home")" class="btn btn-primary mb-2">Više</a>
-                        <div class="d-flex flex-column ml-2">
+                        <div class="d-flex flex-column ml-2 mb-2">
                             <span class="date">@project.CreatedAt</span>
                         </div>
                     </div>
