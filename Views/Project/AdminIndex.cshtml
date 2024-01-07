@@ -40,7 +40,7 @@
                                         <td>@(n++)</td>
                                         <td>@project.Title</td>
                                         <td>@project.SubTitle</td>
-                                        <td>@project.Content</td>
+                                        <td>@Html.Raw(System.Web.HttpUtility.HtmlDecode(project.Content.Substring(0, Math.Min(50, project.Content.Length))))</td>
                                         <td>@(project.UpdatedAt.ToString("dd.MM.yyyy."))</td>
                                         <td>
                                             <a class="btn btn-success mt-3 mb-3" asp-route-id="@project.Id" asp-action="Edit">Uredi</a>
