@@ -32,7 +32,7 @@
                         <h5 class="card-title m-2">@project.Title</h5>
                         <h6 class="card-title m-2">@project.SubTitle</h6>
                         <p class="card-text m-2">@Html.Raw(System.Web.HttpUtility.HtmlDecode(project.Content.Substring(0, 10)))</p>
-                        <a href="@Url.Action("Index", "Home")" class="btn btn-primary mb-2">Više</a>
+                            <a href="@Url.Action("AllProjectsIndex", "Project")#@Html.Raw(project.Title.Replace(" ", "_"))" class="btn btn-primary mb-2">Više</a>
                         <div class="d-flex flex-column ml-2 mb-2">
                             <span class="date">@project.CreatedAt</span>
                         </div>
