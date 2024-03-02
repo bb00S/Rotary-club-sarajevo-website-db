@@ -9,7 +9,7 @@ Complex functionalities such as interface-to-database connection and user interf
 An integral aspect of this project involved database management utilizing SQL Server.  I adeptly developed and executed numerous queries and exports to maintain data integrity and facilitate accessibility. 
 While adhering to the aesthetic principles of the Rotary organization, this endeavor provided a significant opportunity to showcase uniqueness and creativity within the constraints of the design. 
 This report encapsulates the comprehensive journey of creating the Rotary Club Sarajevo website, highlighting the technical intricacies, creative solutions, 
-and enduring impact within the Rotary community. Join us as we delve into the depths of this transformative project. 
+and enduring impact within the Rotary community. 
 
 # More Project Information
 The full report can be found at https://github.com/bb00S/Rotary-club-sarajevo-website-db
