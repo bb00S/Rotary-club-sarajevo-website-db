@@ -1,0 +1,26 @@
+{
+  "ConnectionStrings": {
+   
+    "DefaultConnection": "server=.;database=rotarysarajevo; trusted_connection=true; TrustServerCertificate=True;"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "Facebook": {
+    "AppId": "",
+    "AppSecret": ""
+  },
+  "AllowedHosts": "*",
+  "Keyword": "Keyword",
+  "EmailConfiguration": {
+    "HostName": "",
+    "Port": ,
+    "Username": "",
+    "Password": "",
+    "Reciever": "",
+    "Sender": "application@rotarysarajevo.ba"
+  }
+}
