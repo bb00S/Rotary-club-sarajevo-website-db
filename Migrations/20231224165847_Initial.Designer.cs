@@ -12,8 +12,8 @@ using RotaryClub.Data;
 namespace RotaryClub.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231204103657_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20231224165847_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -96,6 +96,33 @@ namespace RotaryClub.Migrations
                     b.ToTable("Projects");
                 });
 
+            modelBuilder.Entity("RotaryClub.Models.Tasks", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tasks");
+                });
+
             modelBuilder.Entity("RotaryClub.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -137,10 +164,10 @@ namespace RotaryClub.Migrations
                         {
                             Id = 1,
                             Email = "admin@admin.ba",
-                            PasswordHash = new byte[] { 142, 235, 160, 37, 189, 132, 39, 31, 237, 167, 47, 61, 241, 126, 159, 144, 178, 228, 28, 11, 40, 26, 36, 28, 88, 0, 123, 215, 147, 15, 205, 167, 141, 164, 166, 26, 62, 74, 123, 50, 25, 234, 250, 225, 62, 181, 57, 211, 244, 6, 24, 157, 66, 235, 153, 12, 242, 125, 101, 107, 101, 203, 250, 70 },
-                            PasswordSalt = new byte[] { 222, 245, 55, 190, 46, 43, 210, 170, 54, 50, 249, 94, 118, 46, 98, 179, 57, 211, 82, 94, 93, 225, 11, 163, 106, 170, 61, 90, 30, 207, 145, 46, 225, 2, 33, 206, 100, 248, 38, 28, 134, 215, 243, 171, 185, 155, 201, 227, 123, 147, 58, 171, 80, 81, 253, 254, 21, 220, 240, 21, 30, 211, 160, 179, 223, 75, 136, 148, 106, 163, 185, 24, 115, 45, 250, 159, 188, 237, 45, 154, 184, 255, 176, 163, 31, 136, 226, 55, 45, 210, 200, 1, 66, 237, 166, 193, 152, 202, 16, 234, 12, 68, 199, 197, 115, 62, 10, 175, 51, 95, 100, 42, 109, 65, 63, 98, 136, 251, 216, 70, 90, 162, 221, 90, 130, 245, 156, 70 },
-                            VerificationToken = "A447F6CC515CF4EDC0BFCE70AB1C3F920D5664263EB51CC88E12A24CB5E17EEC5F5EA4F48DE0E5EC2FB48A88A6DE439AD537B0FBA85A0F73E9F4F4D5DAF62714",
-                            VerifiedAt = new DateTime(2023, 12, 4, 11, 36, 56, 971, DateTimeKind.Local).AddTicks(1039)
+                            PasswordHash = new byte[] { 154, 152, 149, 225, 223, 90, 186, 104, 178, 146, 38, 123, 19, 134, 75, 187, 223, 132, 255, 79, 85, 157, 192, 158, 79, 83, 150, 29, 246, 104, 115, 167, 207, 171, 123, 243, 152, 106, 118, 37, 67, 184, 251, 186, 147, 113, 60, 1, 221, 29, 183, 157, 185, 53, 156, 46, 215, 149, 133, 209, 167, 11, 190, 144 },
+                            PasswordSalt = new byte[] { 141, 194, 53, 37, 209, 161, 247, 137, 132, 81, 57, 220, 0, 96, 216, 100, 100, 70, 241, 19, 114, 126, 147, 124, 144, 113, 132, 136, 62, 77, 170, 7, 88, 77, 236, 165, 61, 247, 130, 153, 187, 106, 252, 197, 18, 18, 223, 252, 167, 166, 98, 66, 117, 143, 117, 206, 67, 164, 79, 253, 27, 14, 234, 83, 78, 40, 203, 183, 151, 151, 206, 153, 174, 226, 86, 17, 150, 87, 221, 123, 237, 26, 119, 86, 159, 33, 80, 125, 173, 174, 51, 172, 208, 77, 90, 136, 82, 142, 136, 170, 190, 126, 127, 123, 245, 127, 63, 39, 219, 94, 38, 210, 148, 186, 120, 129, 102, 86, 178, 18, 111, 232, 33, 63, 83, 213, 45, 57 },
+                            VerificationToken = "287A7C4040D92136082081F35CEEE4EF1CB7D1EAF352FD0D6ACC30AE40D6D2BEAB07C6BD2720B3F570E3F5D2E6F45ABEF7865D2F1185FF0F2471D1465387E1DB",
+                            VerifiedAt = new DateTime(2023, 12, 24, 17, 58, 46, 785, DateTimeKind.Local).AddTicks(8578)
                         });
                 });
 #pragma warning restore 612, 618

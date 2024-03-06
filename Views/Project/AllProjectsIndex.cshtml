@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Project>;
+@{
+    ViewData["Title"] = "Svi projekti";
+}
+@section Styles{
+    <link rel="stylesheet" href="~/css/user.css" />
+}
+
+@foreach (var project in Model)
+{
+    <section id="@Html.Raw(project.Title.Replace(" ", "_"))">
+        <div class="row row-cols-1 row-cols-md-2 g-4 mx-auto">
+            <div class="col-sm-6 mx-auto">
+                <div class="shadow-md-5" id="shadow">
+                    <div class="card mb-3 shadow-md-5" id="shadow">
+                        <img src="@project.PhotoUrl" class="card-img-top" alt="" />
+                        <div class="card-body">
+                        <h5 class="card-title">@project.Title</h5>
+                        <p class="card-text">
+                            @Html.Raw(System.Web.HttpUtility.HtmlDecode(project.Content))
+                        </p>
+                        <div class="d-flex flex-column ml-2">
+                            <span class="date">@project.CreatedAt</span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}

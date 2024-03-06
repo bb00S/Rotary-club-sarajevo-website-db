@@ -24,6 +24,12 @@ namespace RotaryClub.Controllers
             return View(project);
         }
 
+        public async Task<IActionResult> AllProjectsIndex()
+        {
+            var project = await _projectService.GetAll();
+            return View(project);
+        }
+
         [HttpGet]
         public IActionResult Create()
         {
