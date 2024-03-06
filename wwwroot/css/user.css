@@ -504,7 +504,7 @@
 
     .card21 {
         width: 450px !important;
-        height: 400px !important;
+        height: 420px !important;
         background-color: #fff;
         background: linear-gradient(#f8f8f8, #fff);
         box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
@@ -683,4 +683,8 @@
 
     .btn21:hover .arrow {
         width: 4rem;
+    }
+
+    html * {
+        font-family: HelveticaNeue-Light,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif !important;
     }

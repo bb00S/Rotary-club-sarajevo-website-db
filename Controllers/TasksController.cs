@@ -66,7 +66,7 @@ namespace RotaryClub.Controllers
                 return View(editTasksVM);
             var status = await _tasksService.Update(id, editTasksVM);
             if (status.Success)
-                return RedirectToAction("Index");
+                return RedirectToAction("TasksIndex");
             return BadRequest(status.ErrorMessage);
         }
 

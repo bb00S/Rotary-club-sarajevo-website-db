@@ -52,6 +52,10 @@ body {
         margin-bottom: 0;
     }
 
-.nav-link {
-    cursor: pointer;
-}
+    .nav-link {
+        cursor: pointer;
+    }
+
+    html * {
+        font-family: HelveticaNeue-Light,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif !important;
+    }

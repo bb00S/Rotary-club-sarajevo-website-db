@@ -33,6 +33,7 @@ msbuild.wrn
 # Visual Studio 2015
 .vs/
 
-/wwwroot/images/members
+
 /wwwroot/images/projects
+/wwwroot/images/members
 /appsettings.json
