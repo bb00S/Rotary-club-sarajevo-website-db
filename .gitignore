@@ -36,4 +36,4 @@ msbuild.wrn
 
 /wwwroot/images/projects
 /wwwroot/images/members
-/appsettings.json
+appsettings.json
