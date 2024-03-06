@@ -1,26 +1,26 @@
 {
-    "ConnectionStrings": {
-        //"DefaultConnection": "server=TARIK-WORK-DELL;database=rotarysarajevo; trusted_connection=true; TrustServerCertificate=True;"
-        "DefaultConnection": "server=DESKTOP-04PDE12;database=rotarysarajevo; trusted_connection=true; TrustServerCertificate=True;"
-    },
-    "Logging": {
-        "LogLevel": {
-            "Default": "Information",
-            "Microsoft.AspNetCore": "Warning"
-        }
-    },
-    "Facebook": {
-        "AppId": "998028201575174",
-        "AppSecret": "b66d9fd5902ef2a78e947b1cf7b30dd0"
-    },
-    "AllowedHosts": "*",
-    "Keyword": "Lozinka",
-    "EmailConfiguration": {
-        "HostName": "smtp.mailgun.org",
-        "Port": 587,
-        "Username": "postmaster@sandbox726c40206b6f4293a57d77e634d1f30f.mailgun.org",
-        "Password": "3d487cba7294e44267792604de34bd6c-07ec2ba2-618828ea",
-        "Reciever": "tarik.horoz@gmail.com",
-        "Sender": "application@rotarysarajevo.ba"
+  "ConnectionStrings": {
+   
+    "DefaultConnection": "server=.;database=rotarysarajevo; trusted_connection=true; TrustServerCertificate=True;"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
     }
+  },
+  "Facebook": {
+    "AppId": "",
+    "AppSecret": ""
+  },
+  "AllowedHosts": "*",
+  "Keyword": "Keyword",
+  "EmailConfiguration": {
+    "HostName": "",
+    "Port": ,
+    "Username": "",
+    "Password": "",
+    "Reciever": "",
+    "Sender": "application@rotarysarajevo.ba"
+  }
 }
